@@ -7,6 +7,7 @@ class Solution:
         # [8,9,9,9]
         # [8,8,9,9]
         # [8,8,8,9]
+        https://leetcode-cn.com/problems/plus-one/
         """
         length = len(digits)
         r = length -1       #r = 3
