@@ -33,3 +33,7 @@ class Solution2:
              if slow ==fast:
                  return True
         return False
+
+
+
+

@@ -7,8 +7,8 @@ class Solution1:
     def swapPairs(self, head: ListNode) ->ListNode:
         """
         #关键在哪？？？关键在于添加一个哨兵，保存b.next
-        pre -> a -> b ->b.next       ==>
-        pre -> b -> a ->b.next
+        pre -> a -> b -> b.next       ==>
+        pre -> b -> a -> b.next
         Here, pre is the previous node.
         Since the head doesn't have a previous node,
         I just use self instead.
