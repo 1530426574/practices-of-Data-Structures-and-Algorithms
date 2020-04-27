@@ -7,7 +7,7 @@ class ListNode:
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         """
-
+        #关键在于 加一个 pre ，最后pre变成最末端那个元素，最开始的head指向之前定义的pre
         关键在哪呢???    cur.next -> pre   cur.next = pre
         改变当前节点(cur)的指针指向上一个节点（pre)，同时保存当前节点的下一个节点(next)
         Assume that we have linked list  1 → 2 → 3 → NULL
