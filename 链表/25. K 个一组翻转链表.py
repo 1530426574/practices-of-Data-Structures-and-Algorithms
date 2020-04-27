@@ -8,7 +8,9 @@ class Solution1:
     def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
         """
         关键在哪呢，链表翻转以后，如何把他们首尾相连呢？
-        001 需要知道，翻转链表的首，尾，以及尾的下一个节点。
+        001 链表的本质：链接的是一个个分散的对象。不是变量或者标识符。
+        002 需要知道，翻转链表的首，尾，以及尾的下一个节点。
+        003 一个对象可以被多个变量引用
         l, r : define reversing range
         pre, cur : used in reversing, standard reverse linked linked list method
         jump : used to connect last node in previous k-group to first node in following k-group
@@ -16,8 +18,8 @@ class Solution1:
         """
         dumpy = jump = ListNode(0)
         dumpy.next = l = r = head
-#   dumpy->1->2->3->4->5->6 ->7->8->9->10
-#    3->2->1-> 6 - 5 - 4
+#       dumpy->1->2->3->4->5->6 ->7->8->9->10
+#       j->3 -> 2-> 1 -> 6 -> 5 -> 4
         while True:
             #遍历出4
             count = 0
