@@ -29,13 +29,15 @@ class Solution:
 class Solution1:
     def rotate(self, nums, k):
         """
-        :type nums: List[int]
-        :type k: int 1+2
-        :rtype: None Do not return anything, modify nums in-place instead.
+        关键在哪呢？
+        001 原来下标为 i 的我们把它放到 (i+k)%length 的位置
         """
         length = len(nums)
         a = [0]*length
+        k = k%length #k>length
         for i in  range(length):
+#       输入: [1,2,3,4,5,6,7] 和 k = 3
+#       向右旋转 3 步: [5,6,7,1,2,3,4]
             a[(i+k)%length]=nums[i]
         for i in range(length):
             nums[i] = a[i]
