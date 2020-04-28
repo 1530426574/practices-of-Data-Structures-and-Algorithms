@@ -29,6 +29,7 @@ class Solution1:
             if count==k :
                 # dumpy -> 1 -> 2 -> 3 -> 4 -> 5
                 # pre,cur = r.next,l #(4,1) #(7,4)
+
                 pre = r
                 cur = l
                 for _ in range(k):
@@ -37,6 +38,7 @@ class Solution1:
                     pre = cur
                     cur = next
                 # pre = self.reverse_link_list(cur, k, pre)
+
                 jump.next = pre
                 #理解这步的关键在于，理解链表的本质，将一个个不连续，分散的对象链接在一起。一切皆对象，链表链接的是一个个对象（节点对象），链表的特点是
                 jump = l  # jump =1
