@@ -1,1 +1,1 @@
-# Pratices-of-Data-Structures-and-Algorithms
+# pratices-of-Data-Structures-and-Algorithms
