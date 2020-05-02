@@ -11,7 +11,6 @@ class Solution:
         root v1 v2 v3 v4 v5
         关键: 子节点以什么顺序装入栈中。倒序 v5 v4 v3 v3 v1
         出栈的顺序： root v1 v2 v3 v4 v5
-
         """
         if root is None:
             return []
