@@ -1,5 +1,8 @@
 import string
-#异位词，相当于把同一串字符串，重新排列组合。有序排列只是其中一种。关键在于总个数，各字母出现的个数是否一致。
+
+
+# 字母异位词指字母相同，但排列不同的字符串。
+# 异位词，相当于把同一串字符串，重新排列组合。有序排列只是其中一种。关键在于总个数，各字母出现的个数是否一致。
 class Solution1:
     def isAnagram(self, s: str, t: str) -> bool:
         """
@@ -19,7 +22,10 @@ class Solution1:
         #     a.append(s.count(c)==t.count(c)) #遍历26*n
         # return all(a)
 
+
 from collections import defaultdict
+
+
 class Solution2:
     def isAnagram(self, s: str, t: str) -> bool:
         """
@@ -30,16 +36,18 @@ class Solution2:
         002 某一字母s存在，个数为x,t也存在，个数为y,但y>x,这种情况意味着，有一种字母在s中的个数多余在t中的个数
         """
 
-        if len(s)!=len(t):
+        if len(s) != len(t):
             return False
         d = defaultdict(int)
-        for c in s: # aaaa
+        for c in s:  # aaaa
             d[c] += 1
-        for c in t: # aaab
+        for c in t:  # aaab
             d[c] -= 1
-            if d[c] <0:#这一步意味着什么呢？
+            if d[c] < 0:  # 这一步意味着什么呢？
                 return False
-        return  True
+        return True
+
+
 class Solution3:
     def isAnagram3(self, s, t):
         """
@@ -50,4 +58,3 @@ class Solution3:
         """
 
         return sorted(s) == sorted(t)
-

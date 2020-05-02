@@ -1,1 +1,5 @@
-# pratices-of-Data-Structures-and-Algorithms
+***pratices-of-Data-Structures-and-Algorithms***
+练习算法最关键的是什么？？？
+1、只字不差的***反复阅读***题解思路，一边阅读，一边思考。。。5遍？？？
+2、若思考不清晰，***码代码***，反过来理解题解思路。。。。。。     5遍？？？
+3 、一道一道***扎扎实实***练习。                         
