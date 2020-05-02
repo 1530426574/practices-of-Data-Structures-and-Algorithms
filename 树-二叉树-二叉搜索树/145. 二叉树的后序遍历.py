@@ -12,6 +12,9 @@ class TreeNode:
 
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> list:
+        """
+        关键： root.left,root.right,root,逆序
+        """
 
         if root is None:
             return []

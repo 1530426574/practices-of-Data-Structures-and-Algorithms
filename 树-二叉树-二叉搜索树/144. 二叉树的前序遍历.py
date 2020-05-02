@@ -7,16 +7,15 @@ class TreeNode:
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> list:
         """
-        关键在哪呢？循环，自相似性，重复子问题。
+        关键在哪呢？循环，自相似性，重复子问题。 root root.left root.right
         先从栈中弹出根节点，然后依次向栈中加入其右孩子节点，然后是做孩子节点
         """
         res = []
         stack = [root]
         while stack:
-            node = stack.pop()
-            if node:
-                res.append(node)
-                stack.append(node.right)
-                stack.append(node.left)
-
+            root = stack.pop()
+            if root:
+                res.append(root.val)
+                stack.append(root.right)
+                stack.append(root.left)
         return res

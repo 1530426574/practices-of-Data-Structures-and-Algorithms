@@ -6,6 +6,12 @@ class TreeNode:
 
 class Solution:
     def postorder(self, root: TreeNode) -> list:
+        """
+         v1 v2 v3 v4 v5 root
+        关键: 子节点以什么顺序装入栈中。顺序 v1 v2 v3 v4 v5
+        出栈的顺序： root v5 v4 v3 v3 v1
+        """
+
         if not root:
             return []
         stack, output = [root], []
