@@ -1,7 +1,9 @@
 class ListNode:
-    def __init__(self,x):
+    def __init__(self, x):
         self.val = x
         self.next = None
+
+
 class Solution1:
     def hasCycle(self, head: ListNode) -> bool:
         """
@@ -22,18 +24,16 @@ class Solution1:
             else:
                 return True
         return False
+
+
 class Solution2:
     def hasCycle(self, head: ListNode) -> bool:
-        if  not (head and head.next):
-             return False
-        slow ,fast = head,head.next
+        if not (head and head.next):
+            return False
+        slow, fast = head, head.next
         while fast and fast.next:
-             slow = slow.next
-             fast = fast.next.next
-             if slow ==fast:
-                 return True
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
         return False
-
-
-
-

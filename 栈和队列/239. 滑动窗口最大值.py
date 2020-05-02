@@ -1,6 +1,8 @@
 from collections import deque
+
+
 class Solution:
-    def maxSlidingWindow(self, nums:list, k: int) -> list:
+    def maxSlidingWindow(self, nums: list, k: int) -> list:
         """
         ****单调递减队列*****
         双向队列添加什么，索引还是元素，
@@ -27,14 +29,12 @@ class Solution:
         """
         res = []
         bigger = deque()
-        for i ,n in enumerate(nums):
+        for i, n in enumerate(nums):
             while bigger and nums[bigger[-1]] <= n:
                 bigger.pop()
             bigger += [i]
-            if  i - bigger[0] >=k: #9  8 7 6 5 4 3 2 1
+            if i - bigger[0] >= k:  # 9  8 7 6 5 4 3 2 1
                 bigger.popleft()
-            if i+1 >= k:
+            if i + 1 >= k:
                 res.append(nums[bigger[0]])
-        return  res
-
-
+        return res

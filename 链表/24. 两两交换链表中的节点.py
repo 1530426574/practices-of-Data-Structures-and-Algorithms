@@ -1,10 +1,11 @@
 class ListNode:
-    def __init__(self,x):
+    def __init__(self, x):
         self.val = x
         self.next = None
 
+
 class Solution1:
-    def swapPairs(self, head: ListNode) ->ListNode:
+    def swapPairs(self, head: ListNode) -> ListNode:
         """
         #关键在哪？？？关键在于添加一个哨兵，保存b.next
         pre -> a -> b -> b.next       ==>
@@ -21,28 +22,18 @@ class Solution1:
         """
 
         dumy = ListNode(0)
-        pre,pre.next = dumy,head
+        pre, pre.next = dumy, head
         while pre.next and pre.next.next:
             a = pre.next
-            b=  a.next
-            pre.next,b.next,a.next = b,a,b.next
+            b = a.next
+            pre.next, b.next, a.next = b, a, b.next
             pre = a
         return dumy.next
 
 
-
-
-
-
-
-
-
-
-
-
-#递归
+# 递归
 class Solution1:
-    def swapPairs(self, head: ListNode) ->ListNode:
+    def swapPairs(self, head: ListNode) -> ListNode:
         """
 
         :param head:
@@ -53,17 +44,15 @@ class Solution1:
         交换了两个节点以后，返回 secondNode，因为它是交换后的新头。
         在所有节点交换完成以后，我们返回交换后的头，实际上是原始链表的第二个节点
         """
-        if  head is None or  head.next is None:
+        if head is None or head.next is None:
             return head
 
         first = head
         second = head.next
         # Swapping
 
-
         first.next = self.swapPairs(second.next)
         second.next = first
 
         # Now the head is the second node
         return second
-

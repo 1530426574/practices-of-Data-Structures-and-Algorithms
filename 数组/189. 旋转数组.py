@@ -21,11 +21,13 @@ class Solution:
         """
         length = len(nums)
         for i in range(k):
-            pre = nums[-1]    #每次遍历从新设置初始值          ## [1,2,3,4,5,6,7]
-            for j in  range(length): # [7,2,3,4,5,6,7] # [7,1,3,4,5,6,7]
+            pre = nums[-1]  # 每次遍历从新设置初始值          ## [1,2,3,4,5,6,7]
+            for j in range(length):  # [7,2,3,4,5,6,7] # [7,1,3,4,5,6,7]
                 cur = nums[j]
-                nums[j]= pre
-                pre = cur #有点像替换，然后保留被替换的，去替换下一个
+                nums[j] = pre
+                pre = cur  # 有点像替换，然后保留被替换的，去替换下一个
+
+
 class Solution1:
     def rotate(self, nums, k):
         """
@@ -33,14 +35,15 @@ class Solution1:
         001 原来下标为 i 的我们把它放到 (i+k)%length 的位置
         """
         length = len(nums)
-        a = [0]*length
-        k = k%length #k>length
-        for i in  range(length):
-#       输入: [1,2,3,4,5,6,7] 和 k = 3
-#       向右旋转 3 步: [5,6,7,1,2,3,4]
-            a[(i+k)%length]=nums[i]
+        a = [0] * length
+        k = k % length  # k>length
+        for i in range(length):
+            #       输入: [1,2,3,4,5,6,7] 和 k = 3
+            #       向右旋转 3 步: [5,6,7,1,2,3,4]
+            a[(i + k) % length] = nums[i]
         for i in range(length):
             nums[i] = a[i]
+
 
 class Solution4:
     def rotate(self, nums, k) -> None:
@@ -57,9 +60,9 @@ class Solution4:
                 反转后 n-k 个数字后        : 5 6 7 1 2 3 4 --> 结果
         """
         k %= len(nums)
-        self.reverse(nums,0,len(nums)-1)
-        self.reverse(nums,0, k-1)
-        self.reverse(nums,k, len(nums)-1)
+        self.reverse(nums, 0, len(nums) - 1)
+        self.reverse(nums, 0, k - 1)
+        self.reverse(nums, k, len(nums) - 1)
 
     def reverse(self, nums, start, end) -> None:
         """
@@ -71,8 +74,8 @@ class Solution4:
             temp = nums[start]
             nums[start] = nums[end]
             nums[end] = temp
-            start += 1 # 用的很多额，有木有笑
-            end -= 1 #
+            start += 1  # 用的很多额，有木有笑
+            end -= 1  #
         # while start < end: #
         #     temp = nums[start]
         #     nums[start] = nums[end]

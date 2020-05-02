@@ -7,22 +7,21 @@ class MinStack:
     def __init__(self):
         self.stack = []
 
-    def push(self,x):
+    def push(self, x):
         curmin = self.getmin()
         if curmin == None or x < curmin:
             curmin = x
-        self.stack.append((x,curmin))
-
+        self.stack.append((x, curmin))
 
     def pop(self):
         self.stack.pop()
 
     def top(self):
         length = len(self.stack)
-        if length  == 0:
+        if length == 0:
             return None
         else:
-            return  self.stack[length-1][0]
+            return self.stack[length - 1][0]
 
     def getmin(self):
         length = len(self.stack)
@@ -30,9 +29,6 @@ class MinStack:
             return None
         else:
             return self.stack[length - 1][1]
-
-
-
 
 #
 # class MinStack2:

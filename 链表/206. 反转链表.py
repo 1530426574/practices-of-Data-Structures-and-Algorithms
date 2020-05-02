@@ -1,7 +1,7 @@
 class ListNode:
-    def __init__(self,x):
-        self.val =x
-        self.next =None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 
 
 class Solution:
@@ -20,32 +20,33 @@ class Solution:
         Do not forget to return the new head reference at the end!
         https://leetcode.com/problems/reverse-linked-list/
         """
-        pre  = None
+        pre = None
         while head is not None:
             next = head.next
-            head.next  = pre
+            head.next = pre
             pre = head
             head = next
         return pre
 
+
 class Solution2:
     def reverseList(self, head: ListNode) -> ListNode:
-        pre  = None
+        pre = None
         cur = head
-        while cur :             #1 → 2 → 3 → NULL
-            next = cur.next     #NULL ← 1 ← 2 ← 3
+        while cur:  # 1 → 2 → 3 → NULL
+            next = cur.next  # NULL ← 1 ← 2 ← 3
             cur.next = pre
             pre = cur
             cur = next
 
         return pre
-#封装与解构
+
+
+# 封装与解构
 class Solution3:
     def reverseList(self, head: ListNode) -> ListNode:
-        pre  = None
+        pre = None
         while head is not None:
-            next,head.next = head.next,pre
-            pre,head = head,next
+            next, head.next = head.next, pre
+            pre, head = head, next
         return pre
-
-

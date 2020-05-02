@@ -12,15 +12,16 @@ class Solution:
         """
         i, j, res = 0, len(height) - 1, 0
         while i < j:
-            if height[i] < height[j]:#此时已经知道最短板是height[i]
-                res = max(res, min(height[i],height[j]) * (j - i))#记录最大面积。
-                i += 1#为什么是i+1，因为此时已经知道最短板是height[i],如果是j-1,最短板还是height[i]
-            else:#此时已经知道最短板是height[j]
-                res = max(res, min(height[i],height[j]) * (j - i))
-                j -= 1 #为什么是j-1,因为如果是i+1,此时，j-1已经固定且缩小了，高度最高也由此时的height[j]决定。面积只会小于刚才的面积。
+            if height[i] < height[j]:  # 此时已经知道最短板是height[i]
+                res = max(res, min(height[i], height[j]) * (j - i))  # 记录最大面积。
+                i += 1  # 为什么是i+1，因为此时已经知道最短板是height[i],如果是j-1,最短板还是height[i]
+            else:  # 此时已经知道最短板是height[j]
+                res = max(res, min(height[i], height[j]) * (j - i))
+                j -= 1  # 为什么是j-1,因为如果是i+1,此时，j-1已经固定且缩小了，高度最高也由此时的height[j]决定。面积只会小于刚才的面积。
         return res
 
-#优化
+
+# 优化
 class Solution1:
     def maxArea(self, height: list) -> int:
         i, j, res = 0, len(height) - 1, 0

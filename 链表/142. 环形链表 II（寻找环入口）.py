@@ -1,7 +1,8 @@
 class ListNode:
-    def __init__(self,x):
-        self.val =x
-        self.next =None
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
 
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
@@ -17,6 +18,7 @@ class Solution:
                 return head
             s.add(head)
             head = head.next
+
 
 class Solution1(object):
     def detectCycle(self, head):

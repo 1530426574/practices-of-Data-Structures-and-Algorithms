@@ -10,15 +10,15 @@ class Solution1:
         a = 1
         b = 2
         res = 0
-        if n ==0:
+        if n == 0:
             return 0
         elif n == 1:
             return a
-        elif n ==2:
+        elif n == 2:
             return b
         else:
-            for i in range(3,n+1):
-               res = a+b
-               a = b
-               b = res  # a,b = b,res
+            for i in range(3, n + 1):
+                res = a + b
+                a = b
+                b = res  # a,b = b,res
             return res
