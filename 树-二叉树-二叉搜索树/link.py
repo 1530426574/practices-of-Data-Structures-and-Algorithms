@@ -15,8 +15,9 @@ https://leetcode-cn.com/problems/n-ary-tree-level-order-traversal/
 """
 二叉查找树要求，在树中的任意一个节点，
 其左子树中的每个节点的值，都要小于这个节点的值， node.left<node<node.right
-而右子树节点的值都大于这个节点的值
+而右子树节点的值都大于这个节点的值   node<node.right
 """
+
 """
 前序遍历是指，node -> node.left -> node.right
 对于树中的任意节点来说，
