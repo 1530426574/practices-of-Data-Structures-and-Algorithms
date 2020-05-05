@@ -9,10 +9,9 @@ class Solution:
         """
         关键在哪呢？？先翻转，再遍历每个节点。
         """
-
         #001 terminator
         if root is None:
-            return
+            return None
         #002 handle current level
         root.left,root.right = root.right,root.left
         #003 dril down

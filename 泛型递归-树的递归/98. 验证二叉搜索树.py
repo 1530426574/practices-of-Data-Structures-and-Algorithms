@@ -36,7 +36,6 @@ class Solution2:
             while root:
                 stack.append(root)
                 root = root.left
-
             node = stack.pop()
             val = node.val
             if res and val< res[-1]:  # root.left root root.right
