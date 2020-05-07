@@ -39,3 +39,11 @@ def backtrack(...):
         撤销选择
 写 backtrack 函数时，需要维护走过的「路径」和当前可以做的「选择列表」，当触发「结束条件」时，将「路径」记入结果集。
 """
+
+
+def add(x):
+    if x == 0:
+        return 0
+    else:
+        return add(x-1)
+add(4)
