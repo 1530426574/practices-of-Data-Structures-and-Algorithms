@@ -1,7 +1,7 @@
 class Solution:#44ms
     def permute(self, nums: list) -> list:
         """
-        关键在哪呢？？？ 排列组合，C(n,k) ，C(n,n) 从n个里面选k个，for循环里面，做选择，C在{\displaystyle C_{k}^{n}}C_k^n
+        关键在哪呢？？？关键在于选择列表，接下来是怎么变化的。 排列组合，C(n,k) ，C(n,n) 从n个里面选k个，for循环里面，做选择，C在{\displaystyle C_{k}^{n}}C_k^n
         """
         def traceback(nums,path):
             if not nums:         #选择列表为空了，哈哈哈
