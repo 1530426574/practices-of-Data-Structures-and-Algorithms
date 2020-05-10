@@ -13,19 +13,19 @@ class TreeNode:
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> list:
         """
-        关键： root.left,root.right,root,逆序
+        关键： root.left,root.right,root,逆序  root, root.right, root.left
         """
 
         if root is None:
             return []
-        stack, output = [root, ], []
+        stack, res = [root, ], []
         while stack:
             root = stack.pop()
             if root:
-                output.append(root.val)
+                res.append(root.val)
                 stack.append(root.left)  # 3
                 stack.append(root.right)  # 2
-        return output[::-1]
+        return res[::-1]
 
 
 # 递归

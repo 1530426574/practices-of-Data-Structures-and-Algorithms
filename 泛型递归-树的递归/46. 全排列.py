@@ -1,16 +1,16 @@
 class Solution:#44ms
     def permute(self, nums: list) -> list:
-        """
-        关键在哪呢？？？关键在于选择列表，接下来是怎么变化的。 排列组合，C(n,k) ，C(n,n) 从n个里面选k个，for循环里面，做选择，C在{\displaystyle C_{k}^{n}}C_k^n
+        """ [1 2 3 4] 4 2   隐含条件，不重复选择 n! ，所以选择列表会逐渐变小。
+        关键在哪呢？？？关键在于选择列表，接下来是怎么变化的。
+         排列组合，C(n,k) ，C(n,n) 从n个里面选k个，for循环里面，做选择，C在{\displaystyle C_{k}^{n}}C_k^n
         """
         def traceback(nums,path):
-            if not nums:         #选择列表为空了，哈哈哈
+            if not nums:            #选择列表为空了，哈哈哈
                 res.append(path[:])
-            for i in range(len(nums)):
+            for i in range(len(nums)):                 #用了索引，而不是直接遍历元素。
                 path.append(nums[i])                   #做选择 选择i ，路径path添加i
                 traceback(nums[:i]+nums[i+1:],path)    #选择列表nums除去i ->nums.pop(i)=nums[:i]+nums[i+1:] ,记录新的路径
                 path.pop()                             #撤销选择
-
         res = []
         path = []
         traceback(nums,path)

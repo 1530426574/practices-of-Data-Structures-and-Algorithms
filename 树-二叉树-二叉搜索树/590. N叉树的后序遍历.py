@@ -4,7 +4,7 @@ class TreeNode:
         self.children = None
 
 
-class Solution:
+class Solution:#48ms
     def postorder(self, root: TreeNode) -> list:
         """
          v1 v2 v3 v4 v5 root
@@ -14,22 +14,24 @@ class Solution:
 
         if not root:
             return []
-        stack, output = [root], []
+        stack, res = [root], []
         # v3 v2 v1  root v3 v2 v1
         while stack:
             root = stack.pop()
-            if root is not None:
-                output.append(root.val)
-            for c in root.children:
-                stack.append(c)
-        return output[::-1]
+            # if root is not None:
+            res.append(root.val)
+            stack.extend(root.children[:])
+            # for c in root.children:
+            #     stack.append(c)
+        return res[::-1]
 
 
 class Solution1:
     def postorder(self, root: TreeNode) -> list:
         if root is None:
             return []
-        output = []
+        res = []
         for c in root.children:
-            output += self.postorder(c)
-        return output + [root.val]
+            res += self.postorder(c)
+        return res + [root.val]
+

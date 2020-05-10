@@ -5,15 +5,15 @@
 """
 """
 def recursion(level, param1, param2, ...):
-001 recursion terminator
-    if level > MAX_LEVEL:
-    process_result
-    return
-002 process logic in current level
-    process(level, data...)
-003  drill down
-    self.recursion(level + 1, p1, ...)
-004 restore the current level status if needed
+    001 recursion terminator
+        if level > MAX_LEVEL:
+            process_result
+            return
+    002 process logic in current level
+        process(level, data...)
+    003  drill down
+        self.recursion(level + 1, p1, ...)           #函数压栈的过程
+    004 restore the current level status if needed
 """
 
 
@@ -29,6 +29,7 @@ def recursion(root, level, ):
     # restore current stauts
     return left + cur_val + right
 
+#函数：输入什么，返回什么，里面怎么实现，我不管。
 
 # 不要人肉递归（最大误区）
 # 最近最简方法，拆解为重复子问题

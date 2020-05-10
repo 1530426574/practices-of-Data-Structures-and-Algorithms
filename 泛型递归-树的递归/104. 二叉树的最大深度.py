@@ -16,13 +16,34 @@ class Solution1:# 76 ms,在所有 Python3 提交中击败了13.91%
 
     def maxDepth1(self, root):
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) if root else 0
-
-
-class Solution2:#52 ms
+class Solution2:#40 ms
     # DFS
     def maxDepth(self, root: TreeNode) -> int:
         """
-        关键在哪呢？？？ 哈哈哈，叶子节点的最大深度，并且从所有的叶子节点深度求最大值
+        关键在哪呢？？？ 最大深度，一定是在叶子节点，也可以每个节点遍历的时候更新
+        哈哈哈，叶子节点的最大深度，并且从所有的叶子节点深度求最大值
+        001 在遍历的过程中，节点与子节点的层数之差为 1 ！！！
+        002 不管是递归还是迭代，都是对于每个节点来说，它与它孩子节点的关系,深度相差为1。
+        """
+        if not root:
+            return 0
+        stack = [(1, root)]
+        maxdepth = 0
+        while stack:
+            level, root = stack.pop()
+            if root:
+                if not root.left and not root.right:
+                    maxdepth = max(maxdepth, level)      #最大深度一定在叶子节点，所以只在叶子节点时进行更新
+                stack.append((level + 1, root.right))
+                stack.append((level + 1, root.left))
+        return maxdepth
+
+class Solution3:#52 ms
+    # DFS
+    def maxDepth(self, root: TreeNode) -> int:
+        """
+        关键在哪呢？？？ 最大深度，一定是在叶子节点，也可以每个节点遍历的时候更新
+        哈哈哈，叶子节点的最大深度，并且从所有的叶子节点深度求最大值
         001 在遍历的过程中，节点与子节点的层数之差为 1 ！！！
         002 不管是递归还是迭代，都是对于每个节点来说，它与它孩子节点的关系,深度相差为1。
         """
@@ -33,7 +54,7 @@ class Solution2:#52 ms
         while stack:
             level, root = stack.pop()
             if root:
-                depth = max(depth, level)
+                depth = max(depth, level)          #当然也可以每次迭代的时候更新
                 stack.append((level + 1, root.right))
                 stack.append((level + 1, root.left))
         return depth

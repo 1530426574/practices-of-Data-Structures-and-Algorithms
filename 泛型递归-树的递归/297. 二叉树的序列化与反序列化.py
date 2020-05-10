@@ -10,16 +10,16 @@ class Codec:
         """Encodes a tree to a single string.
 
         :type root: TreeNode
-        :rtype: str
+        :rtype: str   1 2 3
         """
-        if not root: return 'None'
-        return root.val, self.serialize(root.left), self.serialize(root.right)
+        if not root: return 'None'   #前序遍历
+        return ','.join([str(root.val), self.serialize(root.left), self.serialize(root.right)])
 
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         :type data: str
-        :rtype: TreeNode
+        :rtype: TreeNode #[1 ,2 , None ,None, 3 ,None, None]
         """
         def rdeserialize(l):
             """ a recursive helper function for deserialization."""
@@ -27,9 +27,9 @@ class Codec:
                 l.pop(0)
                 return None
 
-            root = TreeNode(l[0])
+            root = TreeNode(l[0])  #根接下来就是left
             l.pop(0)
-            root.left = rdeserialize(l)
+            root.left  = rdeserialize(l)    #和前序与中序构造二叉树一个逻辑
             root.right = rdeserialize(l)
             return root
 
