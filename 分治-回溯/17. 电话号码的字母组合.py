@@ -1,20 +1,19 @@
 class Solution1:
-    def letterCombinations(self, digits: str) -> list:
+    def letterCombinations(self, digits):
         if not digits:
             return []
-        d = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
-        def traceback(index,path):
-            if len(path)==len(digits):
-                res.append(path)
-            for i in range(index,len(digits[index])):
-                for j in d[digits[i]]:
-                    path+=j
-                    traceback(i+1,path)
-                    # path=path[:]
+        dic = {"2": "abc", "3": "def", "4": "ghi", "5": "jkl", "6": "mno", "7": "pqrs", "8": "tuv", "9": "wxyz"}
         res = []
-        path=""
-        traceback(0,path)
+        self.dfs(digits, dic, 0, "", res)
         return res
+
+    def dfs(self, digits, dic, index, path, res):
+        if len(path) == len(digits):
+            res.append(path)
+            return
+        for i in range(index, len(digits)):
+            for j in dic[digits[i]]:
+                self.dfs(digits, dic, i + 1, path + j, res)
 
 class Solution:#44ms
     def letterCombinations(self, digits: str) -> list:
@@ -26,7 +25,7 @@ class Solution:#44ms
             if len(path) == len(digits):
                 res.append(path)
                 return                   #为啥有return，要在这里结束？？？？？
-            for c in d[digits[index]]:
+            for c in d[digits[index]]:   #index的作用是为了确定新的选择列表。
                 path+=c
                 traceback(index+1,path)
                 path=path[0:-1]
@@ -36,7 +35,7 @@ class Solution:#44ms
         traceback(0, path)
         return res
 class Solution2:
-    def letterCombinations(self, digits: str) -> List[str]:
+    def letterCombinations(self, digits: str) -> list[str]:
         if not digits: return []
         digit_map = {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno',
                      '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
@@ -71,4 +70,40 @@ class Solution3(object):#队列思想
 				for j in letters:
 					res.append(tmp+j)
 		return res
+
+
+class Solution4:
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        phone = {'2': ['a', 'b', 'c'],
+                 '3': ['d', 'e', 'f'],
+                 '4': ['g', 'h', 'i'],
+                 '5': ['j', 'k', 'l'],
+                 '6': ['m', 'n', 'o'],
+                 '7': ['p', 'q', 'r', 's'],
+                 '8': ['t', 'u', 'v'],
+                 '9': ['w', 'x', 'y', 'z']}
+
+        def backtrack(combination, next_digits):
+            # if there is no more digits to check
+            if len(next_digits) == 0:
+                # the combination is done
+                output.append(combination)
+            # if there are still digits to check
+            else:
+                # iterate over all letters which map
+                # the next available digit
+                for letter in phone[next_digits[0]]:
+                    # append the current letter to the combination
+                    # and proceed to the next digits
+                    backtrack(combination + letter, next_digits[1:])
+
+        output = []
+        if digits:
+            backtrack("", digits)
+        return output
+
 

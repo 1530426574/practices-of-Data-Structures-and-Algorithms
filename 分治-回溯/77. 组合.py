@@ -1,4 +1,5 @@
 from typing import List
+
 class Solution:#496ms  61.58% 1 2 3 4 -> n=4 ,k =2  当len(path) =2 时，就终止，已经选完了。
     def combine(self, n: int, k: int) -> List[List[int]]: #隐含条件，选了前面的，选择列表只能是后面的。
         def backtrack(index=1, path=[]):
