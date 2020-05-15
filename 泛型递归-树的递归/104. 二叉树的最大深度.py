@@ -59,7 +59,7 @@ class Solution3:#52 ms
                 stack.append((level + 1, root.left))
         return depth
 
-class Solution3:  #52ms
+class Solution4:  #52ms
     # BFS + deque
     def maxDepth1(self, root):
         if not root:

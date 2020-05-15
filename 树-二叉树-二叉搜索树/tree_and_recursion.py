@@ -13,7 +13,7 @@ def recursion(level, param1, param2, ...):
         process(level, data...)
     003  drill down
         self.recursion(level + 1, p1, ...)           #函数压栈的过程
-    004 restore the current level status if needed
+    004 reverse the current level status if needed
 """
 
 
