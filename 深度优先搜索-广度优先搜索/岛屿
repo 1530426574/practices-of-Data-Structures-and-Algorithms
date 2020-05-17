@@ -1,0 +1,21 @@
+Example:
+grid = [ 1 ,  1 ,  1,
+		 1,   1,   0,
+		 0,   0,   1]
+
+Intial check:
+check = [ False, False, False,
+		False, False, False,
+		False, False, False]
+# the first time call  search function:
+grid[0][0] == '1' and check[0][0] == False:
+check = [ True, True, True,
+		True, True, False,
+		False, False, False ]
+count = 1
+# the second time call check function:
+grid[2][2] = '1' and check[2][2] == False:
+check = [ True, True, True,
+		True, True, False,
+		False, False, True]
+Count = 2
