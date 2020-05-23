@@ -1,3 +1,7 @@
+"""
+输入："23"
+输出：["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+"""
 class Solution1:
     def letterCombinations(self, digits):
         if not digits:
@@ -141,3 +145,21 @@ class Solution6:
         if digits:
             backtrack("", digits)
         return output
+
+def leetter(digits):
+        if not digits:
+            return []
+        dic = {"2": 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
+        length = len(digits)
+
+        def traceback(path, index):
+            if len(path) == length:
+                res.append(path)
+                return
+            for i in dic[str(digits[index])]:
+                traceback(path + i, index + 1)
+
+        path = ""
+        res = []
+        traceback(path, 0)
+        return res
