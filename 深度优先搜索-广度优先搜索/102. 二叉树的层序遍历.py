@@ -2,23 +2,21 @@ class  TreeNode:
     def __init__(self,x):
         self.val = x
         self.left,self.right =None,None
+
 #递归
-
 #首先最核心的代码还是树节点的遍历，深度优先遍历和广度优先遍历，这道题的关键在于，怎么判断和存储每一层的节点
-
+#dfs
 class Solution:#40ms
     def levelOrder(self, root: TreeNode) -> list:      #递归的本质就是调用自身函数，函数的本质就是压栈与出栈。
         def dfs(root,level):
-            if not root:                #001 terminator
+            if not root:                  #001 terminator
                 return
-            if len(res)<level:          #002  process current level
-                res.append([])    #最关键的！！！！
-
-            res[level-1].append(root.val)
-
-            dfs(root.left,level+1)     #003 dril down
+            if len(res)<level:            #002  process current level
+                res.append([])            #最关键的 ，没有就新建，有的话就直接添加或者访问！！！！
+            res[level-1].append(root.val) #当前层逻辑如何处理，
+            dfs(root.left,level+1)        #003 dril down
             dfs(root.right,level+1)
-                                      #004 reverse  the curreent status if needed
+                                          #004 reverse  the curreent status if needed
         res = []
         dfs(root,1)
         return res
@@ -43,9 +41,9 @@ class Solution1:#44ms
         while stack:
             root, level = stack.pop()
             if root:
-                if len(res) < level:
+                if len(res) < level: #这一步，也挺难想到的，不是么？？？
                     res.append([])
-                res[level - 1].append(root.val)
+                res[level - 1].append(root.val) #根据level来索引找到对应的层盒子，每个节点的值应该放在哪
                 stack.append((root.right, level + 1))
                 stack.append((root.left, level + 1))
         return res

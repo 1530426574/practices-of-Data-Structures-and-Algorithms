@@ -1,9 +1,15 @@
+广度递归是逐层遍历，
+所以用了队列来实现先进先出，
+同时每次往队列推进每个节点的子节点（或者相关节点）
+
+————————————————————
+left.children right ,left
+————————————————————
 #BFS 代码模板
 def BFS(graph, start, end):
     visited = set()
 	queue = []
 	queue.append([start])
-
 	while queue:
 		node = queue.pop()
 		visited.add(node)

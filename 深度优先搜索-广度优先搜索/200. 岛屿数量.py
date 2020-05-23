@@ -1,5 +1,19 @@
+"""
+Example:
+grid = [ 1 ,  1 ,  1,
+		 1,   1,   0,
+		 0,   0,   1]
+"""
 
-#高手
+"""
+关键在哪，
+当前节点，子节点如何表示。
+以及终止条件  
+当前逻辑处理  
+dril down   
+图如何实现遍历子节点。
+"""
+#高手DFS
 def numIslands(self, grid):
     def sink(i, j):
         if 0 <= i < len(grid) and 0 <= j < len(grid[i]) and grid[i][j] == '1':
@@ -8,6 +22,11 @@ def numIslands(self, grid):
             return 1
         return 0
     return sum(sink(i, j) for i in range(len(grid)) for j in range(len(grid[i])))
+
+
+
+
+
 
 #普通
 from collections import deque

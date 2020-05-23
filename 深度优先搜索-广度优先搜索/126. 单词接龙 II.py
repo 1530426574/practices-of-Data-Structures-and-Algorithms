@@ -1,32 +1,69 @@
-from collections import defaultdict
+from collections import defaultdict,deque
 from pprint import pprint
-class Solution:
-    def ladderLength(self, beginWord: str, endWord: str, wordList: list) -> int:
-        """
-        关键在哪呢，广度优先遍历的概念->每层轮询访问。
-        """
 
-        if endWord not in wordList or not endWord or not beginWord or not wordList:
-            return 0
-        l = len(beginWord) #单词列表的所有单词长度一致
-        d = defaultdict(list)
-        #wordList = ["hot", "dot", "dog", "lot", "log", "cog"]
-        for word in wordList:
-            for i in range(3):
-                key = word[:i] + '*' + word[i + 1:]
-                d[key].append(word)
+#关键在于用一个path存储遍历得到的节点，直到满足条件。
+## Solution 1
+def findLadders(self, beginWord, endWord, wordList):
+	if not endWord or not beginWord or not wordList or endWord not in wordList \
+		or beginWord == endWord:
+		return []
 
-        queue = [(beginWord,1)]
-        visited ={beginWord:True}
-        while queue:
-            cur,level = queue.pop(0)
-            for i in range(l):
-                key1 = cur[:i]+'*'+cur[i+1:]
-                for word in d[key1]:  #key不存在的话，value默认为[]
-                    if word == endWord:
-                        return level +1
-                    if not word  in visited:
-                        visited[word]=True
-                        queue.append((word,level+1)) #相当于把每一层的节点都放入队列当中。
-                d[key1]= []
-        return 0
+	L = len(beginWord)
+
+	# Dictionary to hold combination of words that can be formed,
+	# from any given word. By changing one letter at a time.
+	all_combo_dict = defaultdict(list)
+	for word in wordList:
+		for i in range(L):
+			all_combo_dict[word[:i] + "*" + word[i+1:]].append(word)
+
+	# Shortest path, BFS
+	ans = []
+	queue = deque()
+	queue.append((beginWord, [beginWord]))
+	visited = set([beginWord])
+	found = False
+	while queue and not found:
+		# print(queue)
+		length = len(queue)
+		# print(queue)
+		localVisited = set()
+		for _ in range(length):
+			word, path = queue.popleft()
+			for i in range(L):
+				for nextWord in all_combo_dict[word[:i] + "*" + word[i+1:]]:
+					if nextWord == endWord:
+						# path.append(endword)
+						ans.append(path+[endWord])
+						found = True
+					if nextWord not in visited:
+						localVisited.add(nextWord)
+						queue.append((nextWord, path+[nextWord]))
+		visited = visited.union(localVisited)
+	return ans
+
+
+class Solution2:
+    def findLadders(self, beginWord, endWord, wordList):
+
+        wordList = set(wordList)
+        res = []
+        layer = {}
+        layer[beginWord] = [[beginWord]]
+
+        while layer:
+            newlayer = defaultdict(list)
+            for w in layer:
+                if w == endWord:
+                    res.extend(k for k in layer[w])
+                else:
+                    for i in range(len(w)):
+                        for c in 'abcdefghijklmnopqrstuvwxyz':
+                            neww = w[:i]+c+w[i+1:]
+                            if neww in wordList:
+                                newlayer[neww]+=[j+[neww] for j in layer[w]]
+
+            wordList -= set(newlayer.keys())
+            layer = newlayer
+
+        return res

@@ -12,7 +12,7 @@ class Solution:
             root, level = stack.pop()
             if root:
                 if len(res) < level:
-                    res.append(float('-inf'))
+                    res.append(float('-inf'))  #先给每一层赋个初始值，然后比较大小
                 res[level - 1]=root.val if root.val>=res[level-1] else res[level-1]
                 stack.append((root.right, level + 1))
                 stack.append((root.left, level + 1))
@@ -38,6 +38,7 @@ class Solution2: #44ms
         maxes = []
         row = [root]
         while any(row):
-            maxes.append(max(node.val for node in row))
-            row = [kid for node in row for kid in (node.left, node.right) if kid]  #每次存放的都是同一层的子节点。
+            maxes.append(max(node.val for node in row)) #每层所有节点的值
+            row = [kid for node in row for kid in (node.left, node.right) if kid]  # 收集所有子节点，
+                                                                                   # 每次存放的都是同一层的子节点。
         return maxes
