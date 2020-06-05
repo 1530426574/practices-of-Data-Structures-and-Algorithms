@@ -5,7 +5,6 @@ class Solution:
         不断缩小查找范围，
         每次减半，单调，有边界
         """
-
         left, right = 0, num                        #边界
 
         while left <= right:
