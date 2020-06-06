@@ -16,7 +16,8 @@ https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/
 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/
-高级 DP 实战题目
+32
+9 高级 DP 实战题目
 https://leetcode-cn.com/problems/perfect-squares/
 https://leetcode-cn.com/problems/edit-distance/ （重点）
 https://leetcode-cn.com/problems/jump-game/
