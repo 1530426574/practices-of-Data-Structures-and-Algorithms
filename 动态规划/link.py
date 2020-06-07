@@ -1,4 +1,7 @@
 """
+：「动态规划」通常不关心过程，只关心「阶段结果」，这个「阶段结果」就是我们设计的「状态」。
+什么算法关心过程呢？「回溯算法」，「回溯算法」需要记录过程，复杂度通常较高。
+
 实战题目
 https://leetcode-cn.com/problems/climbing-stairs/description/
 https://leetcode-cn.com/problems/triangle/description/
@@ -17,6 +20,7 @@ https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/
 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/yi-ge-fang-fa-tuan-mie-6-dao-gu-piao-wen-ti-by-l-3/
 32
+
 9 高级 DP 实战题目
 https://leetcode-cn.com/problems/perfect-squares/
 https://leetcode-cn.com/problems/edit-distance/ （重点）
@@ -31,11 +35,13 @@ https://leetcode-cn.com/problems/coin-change-2/
 
 本周作业
 中等
+
 https://leetcode-cn.com/problems/minimum-path-sum/
 https://leetcode-cn.com/problems/decode-ways
 https://leetcode-cn.com/problems/maximal-square/
 https://leetcode-cn.com/problems/task-scheduler/
 https://leetcode-cn.com/problems/palindromic-substrings/
+
 困难
 https://leetcode-cn.com/problems/longest-valid-parentheses/
 https://leetcode-cn.com/problems/edit-distance/
@@ -45,5 +51,4 @@ https://leetcode-cn.com/problems/split-array-largest-sum
 https://leetcode-cn.com/problems/student-attendance-record-ii/
 https://leetcode-cn.com/problems/minimum-window-substring/
 https://leetcode-cn.com/problems/burst-balloons/
-
 """

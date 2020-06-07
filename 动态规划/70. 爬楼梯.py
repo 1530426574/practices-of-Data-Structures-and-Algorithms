@@ -7,6 +7,10 @@ def climbstairs(n):
 
 #bottom up  最好理解
 def climbstairs1(n):
+    """
+    关键在哪呢？？？
+    dp[i] 表示啥，到达i这个位置的最优解
+    """
     if n ==1:
         return 1
 
