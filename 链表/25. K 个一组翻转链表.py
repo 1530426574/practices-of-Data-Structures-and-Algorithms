@@ -12,7 +12,7 @@ class Solution1:
         002 需要知道，翻转链表的首，尾，以及尾的下一个节点。
         003 一个对象可以被多个变量引用
         l, r : define reversing range
-        pre, cur : used in reversing, standard reverse linked linked list method
+        pre, cur : used in reversing, standard reverse linked list method
         jump : used to connect last node in previous k-group to first node in following k-group
         https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
         """
@@ -24,21 +24,14 @@ class Solution1:
             # 遍历出4
             count = 0
             while r and count < k:
-                count += 1  # (1,head) (2,2）（3,3）（4,4）(5,5)(5,None)    2
+                count += 1     # (1,head) (2,2）（3,3）（4,4）(5,5)(5,None)    2
                 r = r.next
             if count == k:
                 # dumpy -> 1 -> 2 -> 3 -> 4 -> 5
                 # pre,cur = r.next,l #(4,1) #(7,4)
-
                 pre = r
                 cur = l
-                for _ in range(k):
-                    next = cur.next
-                    cur.next = pre
-                    pre = cur
-                    cur = next
-                # pre = self.reverse_link_list(cur, k, pre)
-
+                pre = self.reverse_link_list(cur, k, pre)
                 jump.next = pre
                 # 理解这步的关键在于，理解链表的本质，将一个个不连续，分散的对象链接在一起。一切皆对象，链表链接的是一个个对象（节点对象），链表的特点是
                 jump = l  # jump =1

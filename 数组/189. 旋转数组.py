@@ -35,7 +35,7 @@ class Solution1:
         001 原来下标为 i 的我们把它放到 (i+k)%length 的位置
         """
         length = len(nums)
-        a = [0] * length
+        a = [0] * length    #重新开辟了一个数组
         k = k % length  # k>length
         for i in range(length):
             #       输入: [1,2,3,4,5,6,7] 和 k = 3
@@ -49,7 +49,6 @@ class Solution4:
     def rotate(self, nums, k) -> None:
         """
         这个方法基于这个事实：当我们旋转数组 k 次， k\%nk%n 个尾部元素会被移动到头部，剩下的元素会被向后移动。
-
         在这个方法中，我们首先将所有元素反转。然后反转前 k 个元素，再反转后面 n-kn−k 个元素，就能得到想要的结果。
 
                 假设 n=7n=7 且 k=3k=3 。

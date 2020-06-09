@@ -1,8 +1,8 @@
 class Solution:
     def threeSum(self, nums: list):
         """
-        #[-4,-1, -1, 0,1, 2,]
-        #关键在哪呢？  total = a[i] + a[l] +a[r] ,l与r，一个从左，一个从右开始逐渐逼近（为啥可以这样？？？
+        #[-4,-1, -1, 0,1, 2,] 有点像排列组合，先固定nums[0]，然后从从后面的元素当中选2个，然后进行条件判断。
+        #关键在哪呢？  total = a[i] + a[l] +a[r] ,l与r，一个从左，一个从右开始逐渐逼近（为啥要这样？？？二分查找？？？）
         本质是什么，本质是我要把后面的元素遍历一遍，是两头开始遍历（更快）自增自减，还是一头遍历）
         001 先排序，然后进行遍历。
         002 然后进行遍历。
@@ -32,9 +32,9 @@ https://leetcode-cn.com/problems/3sum/
                     r -= 1
                 else:
                     res.append([nums[i], nums[l], nums[r]])
-                    while l < r and nums[l] == nums[l + 1]:  # [-4,-1, 0,0,0,4]
+                    while l < r and nums[l] == nums[l + 1]:    #[-4,-1,0,0,0,4]
                         l += 1
-                    while l < r and nums[r] == nums[r - 1]:  # [-4,-1, 0,0,0,0,1，2，3，4,4,4,4]
+                    while l < r and nums[r] == nums[r - 1]:    # [-4,-1, 0,0,0,0,1，2，3，4,4,4,4]
                         r -= 1
                     l += 1
                     r -= 1

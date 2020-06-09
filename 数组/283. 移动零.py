@@ -1,8 +1,8 @@
 class Solution1(object):
     def moveZeroes(self, nums):
         """
-            001 核心关键：还是 if a[i]!=0 : a[j] = a[i],j+=1
-            002 关键在于j ,以及后面的 j+=1
+        001 核心关键：还是 if a[i]!=0 : a[j] = a[i],j+=1
+        002 关键在于j ,以及后面的 j+=1
         """
         length = len(nums)
         if length == 0:  # 如果数组为空，则返会0
@@ -53,6 +53,8 @@ def test_moveZeroes(nums):
             nums[j], nums[i] = nums[i], nums[j]
             print('---', nums[i], nums[j])
             j += 1
+    print(nums)
+    return  nums
 
 
 test_moveZeroes([1, 2, 3, 4, 0, 5])

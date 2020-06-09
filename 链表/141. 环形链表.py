@@ -12,11 +12,10 @@ class Solution1:
         在遍历一遍后并把节点存在集合中：
         如果最后一个节点是null，说明没有环，返回False
         如果不是null,而且最后一个节点的next还能在集合中找到，说明有环了。
-
         :param head:
         :return:
         """
-        s = set()
+        s = set()    #很神奇的方法
         while head:
             if head not in s:
                 s.add(head)

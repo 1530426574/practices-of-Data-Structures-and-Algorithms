@@ -9,7 +9,8 @@ class Solution:
         # l1 : 0 2 4 6
         # l2: 1 3 5 7 9 11 13
         """
-        关键在哪呢？
+        关键在哪呢？递归真是服了。。。。捂脸
+        递归的前提是 重复子问题 ，并且假设已经知道结果了。
         传进去的是啥，最后返回值是啥？
         """
         if l1 is None:
@@ -39,11 +40,11 @@ class Solution1:
         while l1 and l2:
             if l1.val <= l2.val:
                 pre.next = l1
-                pre = pre.next
+                pre = l1
                 l1 = l1.next
             else:
                 pre.next = l2
-                pre = pre.next
+                pre = l2
                 l2 = l2.next
         pre.next = l2 if l1 is None else l1
 

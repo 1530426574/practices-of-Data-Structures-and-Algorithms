@@ -1,7 +1,7 @@
 class Solution:
     def twoSum(self, nums: list, target: int):
         """
-        关键在哪呢？本质是什么呢？
+        关键在哪呢？本质是什么呢？nums[j] = target -nums[i]
         001 本质判断两个数是否相等，a = b 或者字典找索引
         002 把其中一个数和对应的下标用字典存起来
         003 等找到相等的数，我也能通过索引找到其下标。
@@ -13,10 +13,9 @@ class Solution:
             return False
         d = {}
         for i in range(length):
-            if nums[i] not in d:  # O(1)
+            if nums[i] not in d:  # O(1)nums[i] ！=target-nums[j]
                 d[target - nums[i]] = i
-            else:
-                # 等价于nums[i] ==nums[j]
+            else:# 等价于nums[i] =target-nums[j]
                 return [i, d[nums[i]]]
 
 
