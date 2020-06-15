@@ -51,6 +51,7 @@ inOrder(r) = inOrder(r->left)->print r->inOrder(r->right)
 后序遍历的递推公式：
 postOrder(r) = postOrder(r->left)->postOrder(r->right)->print r
 """
+
 """
 想要存储一棵二叉树，我们有两种方法，
 一种是基于指针或者引用的二叉链式存储法，

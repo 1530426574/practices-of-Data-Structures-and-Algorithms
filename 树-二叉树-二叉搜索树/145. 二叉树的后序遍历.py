@@ -15,7 +15,6 @@ class Solution:
         """
         关键： root.left,root.right,root,逆序  root, root.right, root.left
         """
-
         if root is None:
             return []
         stack, res = [root, ], []
@@ -33,7 +32,7 @@ class Solution:
 执行用时 :32 ms, 在所有 Python3 提交中击败了90.90%的用户
 内存消耗 :13.7 MB, 在所有 Python3 提交中击败了7.41%的用户"""
 
-
 class Solution1:
+
     def postorderTraversal(self, root: TreeNode) -> list:
         return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val] if root else []

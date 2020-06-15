@@ -1,6 +1,4 @@
 import string
-
-
 # 字母异位词指字母相同，但排列不同的字符串。
 # 异位词，相当于把同一串字符串，重新排列组合。有序排列只是其中一种。关键在于总个数，各字母出现的个数是否一致。
 class Solution1:
@@ -15,14 +13,12 @@ class Solution1:
         如果同一个字母一个字符串有a个，另外一个有b个，判断a ==b
         执行用时 :36 ms, 在所有 Python3 提交中击败了98.53%的用户
         """
-        return all((s.count(i) == t.count(i) for i in string.ascii_lowercase))
+        return all((s.count(i) == t.count(i) for i in string.ascii_lowercase)) #判断 'a' 出现分次数是否相等。
         # a = (s.count(i)==t.count(i) for i in string.ascii_lowercase)
         # a =[]
         # for c in ascii_lowercase:
         #     a.append(s.count(c)==t.count(c)) #遍历26*n
         # return all(a)
-
-
 from collections import defaultdict
 
 
@@ -41,9 +37,9 @@ class Solution2:
         d = defaultdict(int)
         for c in s:  # aaaa
             d[c] += 1
-        for c in t:  # aaab
+        for c in t:  # aaaaaab
             d[c] -= 1
-            if d[c] < 0:  # 这一步意味着什么呢？
+            if d[c] < 0:  # 这一步意味着什么呢？多了be
                 return False
         return True
 
@@ -56,5 +52,4 @@ class Solution3:
         :param t:
         :return:
         """
-
         return sorted(s) == sorted(t)

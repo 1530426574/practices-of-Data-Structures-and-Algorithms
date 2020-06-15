@@ -7,12 +7,13 @@ class Solution:
         003 等找到相等的数，我也能通过索引找到其下标。
         004 一边遍历存储，一边查找比较。
         https://leetcode-cn.com/problems/two-sum/
+        [1,3,4,5]
         """
         length = len(nums)
         if length <= 1:
             return False
         d = {}
-        for i in range(length):
+        for i in range(10):
             if nums[i] not in d:  # O(1)nums[i] ！=target-nums[j]
                 d[target - nums[i]] = i
             else:# 等价于nums[i] =target-nums[j]

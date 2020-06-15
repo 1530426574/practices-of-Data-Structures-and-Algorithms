@@ -34,6 +34,7 @@ def recursion(root, level, ):
 # 不要人肉递归（最大误区）
 # 最近最简方法，拆解为重复子问题
 # 数学归纳法
+#递归的关键在于找关系，就好像找f(n)=f(n-1)+1 ,找重复性，找递推公式。
 
 def preorder(root):
     return [root.val] + preorder(root.left) + preorder(root.right) if root else []

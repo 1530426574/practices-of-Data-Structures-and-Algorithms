@@ -26,12 +26,22 @@ class Solution:#48ms
         return res[::-1]
 
 
-class Solution1:
+class Solution1:# 左 右 根
     def postorder(self, root: TreeNode) -> list:
         if root is None:
             return []
-        res = []
-        for c in root.children:
-            res += self.postorder(c)
+        # res = []
+        # for c in root.children:
+        #     res += self.postorder(c)
+        res = [self.postorder(c) for c in root.children]
         return res + [root.val]
 
+class Solution2:# 左 右 根
+    def postorder(self, root: TreeNode) -> list:
+    #     if root is None:
+    #         return []
+        # res = []
+        # for c in root.children:
+        #     res += self.postorder(c)
+        # res = [self.postorder(c) for c in root.children]
+        return [self.postorder(c) for c in root.children] + [root.val] if root else []

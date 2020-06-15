@@ -28,13 +28,29 @@ class Solution:
         首先想到的是使用堆，因为在最大堆中 heap[0] 永远是最大的元素
         """
         res = []
-        bigger = deque()
-        for i, n in enumerate(nums):
-            while bigger and nums[bigger[-1]] <= n:
-                bigger.pop()
-            bigger += [i]
-            if i - bigger[0] >= k:  # 9  8 7 6 5 4 3 2 1
-                bigger.popleft()
+        d = deque()
+        for i, num in enumerate(nums):
+            while d and num >= nums[d[-1]]:
+                d.pop()
+            d += [i]
+            if i - d[0] == k:  # 9  8 7 6 5 4 3 2 1
+                d.popleft()
             if i + 1 >= k:
-                res.append(nums[bigger[0]])
+                res.append(nums[d[0]])
         return res
+
+
+#维护了一个单调递减的，最前面永远是最大的
+def maxSlidingWindow(self, nums, k):
+    d = deque()
+    out = []
+    for i, n in enumerate(nums):
+        while d and nums[d[-1]] < n:
+            d.pop()
+        d += [i]       # (i,nums[i])
+        if d[0] == i - k:
+            d.popleft()
+        if i+1 >= k:
+            out += nums[d[0]],
+    return out
+
