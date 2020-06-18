@@ -51,11 +51,16 @@ def backtrack(...):
 """
 
 
-def add(x):
-    if x == 0:
-        return 0
-    else:
-        return add(x - 1)
+# def add(x):
+#     if x == 0:
+#         return 0
+#     else:
+#         return add(x - 1)
+#
+#
+# add(4)
+""" D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D """
 
-
-add(4)
+d = {}
+d1 = d.setdefault('a',{})
+print(d1 ,type(d1))
