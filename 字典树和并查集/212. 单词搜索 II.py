@@ -140,13 +140,74 @@ class Solution(object):
             d['#'] = {}
         if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
             return
-        tmp = board[i][j]
-        d = d.get(tmp)
+        d = d.get(board[i][j])
         if not d:
             return
-        board[i][j] = "visited"
+        tmp,board[i][j] = board[i][j],"visited"
         self.dfs(board, d, i + 1, j, path + tmp, res)
         self.dfs(board, d, i - 1, j, path + tmp, res)
         self.dfs(board, d, i, j - 1, path + tmp, res)
         self.dfs(board, d, i, j + 1, path + tmp, res)
         board[i][j] = tmp
+
+
+
+# n = 6
+# M= [1 1 0 0 0 0
+#     1 1 0 0 0 0
+#     0 0 1 1 1 0
+#     0 0 1 1 0 0
+#     0 0 1 0 1 0
+#     0 0 0 0 0 1]
+class Solution1:
+
+    def __init__(self):
+        self.parent = [i for i in range(len(M))]
+
+    def find_root(self,i):
+        root = i
+        while self.parent[root] != i:
+            root = self.parent[root]
+        while parent[i] != i:
+            x = i
+            i = parent[i]
+            parent[x] = root
+        return root
+
+    def union(self,i,j):
+        root1 = self.find_root(i)
+        root2 = self.find_root(j)
+        self.parent[root1] = root2
+    def findCircleNum(self, M: list) -> int:
+        for i in range(len(M)):
+            for j in range(len(M[i])):
+                if M[i][j] ==1 :
+                    self.union(i,j)
+
+        return len(set(self.parent))
+
+#
+# parent = [0,1,2,3,4,5,] #init,自己的parent 就是自己咯
+#
+# def init(parent):
+#     parent = [i for i in range(n)]
+#
+# def find_parent(parent, i):
+#     root = i
+#     while parent[root] != root:
+#         root = parent[root]
+#     while parent[i] != i:
+#         x =i
+#         i = parent[i]
+#         parent[x] = root
+#     return  root
+#
+#
+# def union(parent,i,j):
+#     p1 = find_parent(parent, i)    # find i 的根节点
+#     p2 = find_parent(parent, j)    # find j 的根节点
+#     parent[p1]=p2                  # 若 i j 连通，则i与j 有共同的根节点（拥有共同的好友）
+#
+# for i in range(len(M)):
+#         for j in range(i):
+#             if M[i][j]: union(i, j)
