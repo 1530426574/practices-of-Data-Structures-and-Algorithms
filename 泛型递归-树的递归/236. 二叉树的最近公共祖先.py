@@ -21,7 +21,7 @@ class Solution2:#76ms
         001 可以一边遍历一遍保存深度，从而比较深度
         002 可以一边遍历一边遍历进行翻转
         003 也可以一边遍历一遍判断root root.left, root.right 的关系大小，来判别是否是二叉搜索树
-        004 也可以一遍遍历一遍保存节点和节点的属性(level,parent,left,right)
+        004 也可以一遍遍历一遍保存节点和节点的属性(level,find_parent,left,right)
         遍历完所有节点后，
         """
 
@@ -34,7 +34,7 @@ class Solution2:#76ms
                 stack.append(node.left)
             if node.right:                  #为什么是node.right,
                 parent[node.right] = node
-                stack.append(node.right)    #遍历完所有节点，并且保存到了字典中了，node:node.parent
+                stack.append(node.right)    #遍历完所有节点，并且保存到了字典中了，node:node.find_parent
         ancestors = set()
         while p:                          #先把p,p.parents全部放入一个集合中
             ancestors.add(p)
