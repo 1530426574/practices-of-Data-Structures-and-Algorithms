@@ -5,6 +5,7 @@ https://leetcode-cn.com/problems/generate-parentheses/
 https://leetcode-cn.com/problems/n-queens
 https://leetcode-cn.com/problems/valid-sudoku/description/
 https://leetcode-cn.com/problems/sudoku-solver/#/description
+
 实战题目
 https://leetcode-cn.com/problems/word-ladder/
 https://leetcode-cn.com/problems/minimum-genetic-mutation/

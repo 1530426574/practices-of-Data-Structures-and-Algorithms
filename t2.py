@@ -7,14 +7,12 @@ l1 = len(matrix)
 l2 = len(matrix[0])
 a = [0] * l1 * l2
 print(a)
-
 for i in range(l1*l2):
     row, col = i//l2, i%l2
     c = matrix[row][col]
     print('row={},col={},c = {}'.format(row,col,c))
     a[i] =c
 print(a)
-
 
 #二维 -> 一维
 def two_to_one(i,j,cols=3):
@@ -24,6 +22,3 @@ def two_to_one(i,j,cols=3):
 def one_to_two(index,cols=3):
     return index//cols,index%cols
 
-from pprint import pprint
-a = [[((i//3)*3+j//3) for i in range(9)]for j in range(9)]
-pprint(a)
