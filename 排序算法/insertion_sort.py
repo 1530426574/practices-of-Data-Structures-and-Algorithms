@@ -1,3 +1,4 @@
+
 def insert_sort(arry):
     for i in range(1,len(arry)):
         card = arry[i]                     #current card
