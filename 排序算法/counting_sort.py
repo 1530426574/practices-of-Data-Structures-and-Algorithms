@@ -17,19 +17,22 @@ def counting_sort(array):
     #place the elements in output array
 
     #store the cummulative count
-    for i in range(1,256):
+    for i in range(1, 256):
         count[i] += count[i - 1]
-    i = length - 1
-    while i >= 0:
+
+    for i in range(length):
         output[count[array[i]] - 1] = array[i]
-        count[array[i]] -= 1
-        i = i - 1
+        count[array[i]] -= 1    #个数-1
+
+    # i = length - 1
+    # while i >= 0:   #关键在于理解 count[array[i]] ,值的个数
+    #     output[count[array[i]] - 1] = array[i]
+    #     count[array[i]] -= 1    #个数-1
+    #     i = i - 1
 
     #copy the original array
     for i in range(0, length):
         array[i] = output[i]
-
-
 
 data = [4, 2, 2, 8, 3, 3, 1]
 counting_sort(data)

@@ -9,18 +9,18 @@ def merge_sort(arr):
         r = arr[mid:]
         merge_sort(l)
         merge_sort(r)
-        i = j = k = 0
 
+        i = j = k = 0
         while i < len(l) and j <len(r):
-            if l[i] <r[j]:
-                arr[k] = l[i]
-                i += 1
+            if l[i] < r[j]:
+                arr[k] = l[i]      #谁小就先填谁
+                i += 1            #填完之后+1,为了比较后面的
             else:
                 arr[k] = r[j]
                 j += 1
-            k += 1
+            k += 1                #往arr里填空
 
-        while i < len(l):
+        while i < len(l):  #填后面剩余的
             arr[k] = l[i]
             i += 1
             k += 1
