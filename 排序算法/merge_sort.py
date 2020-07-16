@@ -1,58 +1,32 @@
-
-
 def merge_sort(arr):
     length = len(arr)
     if length > 1:
 
-        mid = length //2
+        mid = length // 2
         l = arr[:mid]
         r = arr[mid:]
         merge_sort(l)
         merge_sort(r)
 
         i = j = k = 0
-        while i < len(l) and j <len(r):
+        while i < len(l) and j < len(r):
             if l[i] < r[j]:
-                arr[k] = l[i]      #谁小就先填谁
-                i += 1            #填完之后+1,为了比较后面的
+                arr[k] = l[i]  # 谁小就先填谁
+                i += 1  # 填完之后+1,为了比较后面的
             else:
                 arr[k] = r[j]
                 j += 1
-            k += 1                #往arr里填空
+            k += 1  # 往arr里填空
 
-        while i < len(l):  #填后面剩余的
+        while i < len(l):  # 填后面剩余的
             arr[k] = l[i]
             i += 1
             k += 1
 
-        while j <len(r):
+        while j < len(r):
             arr[k] = r[j]
             j += 1
             k += 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # # Python program for implementation of MergeSort

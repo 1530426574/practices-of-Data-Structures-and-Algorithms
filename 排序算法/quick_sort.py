@@ -1,45 +1,33 @@
 def partition(array, low, high):
-# 8 9 7 6 5 4 3 2 1 5  i= -1
-# 5 9 7 6 8 4 3 2 1 5  i = 0
-# 5 4 7 6 8 9 3 2 1 5  i = 1
-# 5 4 3 6 8 9 7 2 1 5 i = 2
-# 5 4 3 2 8 9 7 6 1 5  i= 3
-# 5 4 3 2 1 9 7 6 8 5 i= 4
-# 5 4 3 2 1 5 7 6 8 9
+    # 8 9 7 6 5 4 3 2 1 5  i= -1
+    # 5 9 7 6 8 4 3 2 1 5  i = 0
+    # 5 4 7 6 8 9 3 2 1 5  i = 1
+    # 5 4 3 6 8 9 7 2 1 5 i = 2
+    # 5 4 3 2 8 9 7 6 1 5  i= 3
+    # 5 4 3 2 1 9 7 6 8 5 i= 4
+    # 5 4 3 2 1 5 7 6 8 9
     pivot = array[high]
-    i = low -1
+    i = low - 1
     for j in range(low, high):
         if array[j] <= pivot:
             i += 1
-            array[i], array[j] = array[j] ,array[i]
+            array[i], array[j] = array[j], array[i]
 
-    array[i+1], array[high] = array[high], array[i+1]
+    array[i + 1], array[high] = array[high], array[i + 1]
     return i + 1
 
-def quick_sort(array, low, high):
 
+def quick_sort(array, low, high):
     if low < high:
         pivot_poistion = partition(array, low, high)
-        quick_sort(array,low, pivot_poistion)
-        quick_sort(array,pivot_poistion+1, high)
-data = [8, 9, 7, 6, 5, 4, 3, 2, 1, 5 ]
+        quick_sort(array, low, pivot_poistion)
+        quick_sort(array, pivot_poistion + 1, high)
+
+
+data = [8, 9, 7, 6, 5, 4, 3, 2, 1, 5]
 size = len(data)
 quick_sort(data, 0, size - 1)
 print(data)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # Quick sort in Python
@@ -60,10 +48,10 @@ def partition(array, low, high):
     # Select the pivot element
     pivot = array[high]
     i = low - 1
-# 1 2 3 4 5
+    # 1 2 3 4 5
 
     # Put the elements smaller than pivot on the left and greater
-    #than pivot on the right of pivot
+    # than pivot on the right of pivot
     for j in range(low, high):
         if array[j] <= pivot:
             i = i + 1
@@ -75,7 +63,6 @@ def partition(array, low, high):
 
 def quickSort(array, low, high):
     if low < high:
-
         # Select pivot position and put all the elements smaller
         # than pivot on left and greater than pivot on right
         pi = partition(array, low, high)

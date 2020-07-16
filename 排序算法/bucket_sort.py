@@ -1,4 +1,4 @@
-#bucket sort
+# bucket sort
 
 def bucket_sort(array):
     """
@@ -9,7 +9,7 @@ def bucket_sort(array):
 
     bucket = []
     length = len(array)
-    #create emepty buckets
+    # create emepty buckets
     for i in range(length):
         bucket.append([])
 
@@ -19,22 +19,17 @@ def bucket_sort(array):
         index = int(10 * j)
         bucket[index].append(j)
 
-    #sort the elements of each bucket
+    # sort the elements of each bucket
     for i in range(length):
         bucket[i] = sorted(bucket[i])
 
-    #get the sorted elements
+    # get the sorted elements
     k = 0
-    for i in range(length):   #总共有length个buckets,每个buckets是有序的，每个buckets的元素也是有序的，
+    for i in range(length):  # 总共有length个buckets,每个buckets是有序的，每个buckets的元素也是有序的，
         for j in range(len(bucket[i])):
             array[k] = bucket[i][j]
             k += 1
-    return  array
-
-
-
-
-
+    return array
 
 ## Bucket Sort in Python
 
@@ -62,11 +57,3 @@ def bucket_sort(array):
 #             array[k] = bucket[i][j]
 #             k += 1
 #     return array
-
-
-
-
-
-
-
-

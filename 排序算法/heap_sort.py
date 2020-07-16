@@ -15,10 +15,10 @@ def heapify(arr, n, i):
         largest = r
     if largest != i:
         arr[i], arr[largest] = arr[largest], arr[i]
-        heapify(arr, n, largest)    #swap,
+        heapify(arr, n, largest)  # swap,
 
 
-def heap_sort(arr:list):
+def heap_sort(arr: list):
     n = len(arr)
 
     # build max heap
