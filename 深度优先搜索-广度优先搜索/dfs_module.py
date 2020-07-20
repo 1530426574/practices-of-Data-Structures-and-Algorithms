@@ -1,20 +1,19 @@
 visited = set()
 
-def dfs(node,visited):
 
-    #terminator
-    if node in  visited:
+def dfs(node, visited):
+    # terminator
+    if node in visited:
         return
         visited.add(node)
-    #process currrent node level
-    #dril down
+    # process currrent node level
+    # dril down
     for next_node in node.children():
-        if next_node  not  in visited:
-            dfs(next_node,visited)
+        if next_node not in visited:
+            dfs(next_node, visited)
 
 
-
-def def1(self,root):
+def def1(self, root):
     if not root:
         return []
 
@@ -28,7 +27,7 @@ def def1(self,root):
         stack.add(nodes)
 
 
-def bfs(graph,start,end):
+def bfs(graph, start, end):
     queue = []
     queue.append([start])
     visited.add(start)
@@ -40,7 +39,3 @@ def bfs(graph,start,end):
         process(node)
         nodes = generate_related_nodes(node)
         queue.push(nodes)
-
-
-
-

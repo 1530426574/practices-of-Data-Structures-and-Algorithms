@@ -3,6 +3,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         """
@@ -22,9 +23,9 @@ class Solution:
         pre = None
         while head:
             next = head.next  # B
-            head.next = pre   # A.next = pre
-            #切断A与B的关联。 然后B与pre重新建立联系
-            pre = head        #
+            head.next = pre  # A.next = pre
+            # 切断A与B的关联。 然后B与pre重新建立联系
+            pre = head  #
             head = next
         return pre
 

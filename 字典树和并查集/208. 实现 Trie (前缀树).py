@@ -1,11 +1,12 @@
 from pprint import pprint
 
+
 class Trie:
 
     def __init__(self):
         self.trie = {}
 
-#apply ,apple
+    # apply ,apple
     def insert(self, word):
         """
         关键在哪呢？？？t = t[w]
@@ -20,7 +21,7 @@ class Trie:
             t = t[w]
         t['#'] = '#'
 
-#apply
+    # apply
     def search(self, word):
         t = self.trie
         for w in word:
@@ -31,7 +32,7 @@ class Trie:
             return True
         return False
 
-#app
+    # app
     def startsWith(self, prefix):
         t = self.trie
         for w in prefix:

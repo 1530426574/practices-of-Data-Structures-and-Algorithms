@@ -10,22 +10,19 @@ class Solution:
         查找的关键在哪呢？？   有序单调
         """
         m = len(matrix)
-        if m ==0:return False
+        if m == 0: return False
         n = len(matrix[0])
 
-        left,  right = 0, m*n-1
+        left, right = 0, m * n - 1
         while left <= right:
-            mid = left + (right-left)//2
-            row,col = mid//n, mid%n
-            ret =  matrix[row][col]
+            mid = left + (right - left) // 2
+            row, col = mid // n, mid % n
+            ret = matrix[row][col]
 
             if ret == target:
                 return True
             elif ret <= target:
-                left = mid +1
+                left = mid + 1
             else:
-                right = mid -1
+                right = mid - 1
         return False
-
-
-

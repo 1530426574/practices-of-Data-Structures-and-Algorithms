@@ -1,7 +1,8 @@
-#动态规划会保存以前的运算结果，
-#并根据以前的结果对当前进行选择，
+# 动态规划会保存以前的运算结果，
+# 并根据以前的结果对当前进行选择，
 # 有回退功能。
 from typing import List
+
 
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
@@ -25,12 +26,9 @@ class Solution:
         dp = [0 for _ in range(length)]
 
         dp[0] = nums[0]
-        for i in range(1,length):
-            if dp[i-1] >=0 :
-                dp[i] = dp[i-1]+nums[i]
+        for i in range(1, length):
+            if dp[i - 1] >= 0:
+                dp[i] = dp[i - 1] + nums[i]
             else:
                 dp[i] = nums[i]
         return max(dp)
-
-
-

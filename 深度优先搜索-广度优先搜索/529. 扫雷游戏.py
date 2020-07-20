@@ -6,6 +6,8 @@
 如果E与M相邻，则把E改为str(mine_count)
 003 最后返回面板
 """
+
+
 class Solution:
 
     def updateBoard(self, board: list, click: list) -> list:
@@ -50,19 +52,20 @@ class Solution:
             if 0 <= di < m and 0 <= dj < n:
                 self.dfs(di, dj, m, n, board, directions)
 
+
 def dfs1(i, j, m, n, board, directions):
-    if board[i][j] !='E':
+    if board[i][j] != 'E':
         return
-    t = [(i+1,j),(i-1,j),(i,j-1),(i,j+1),(i,j+1),(i+1,j+1 ),(i-1,j-1 ),(i-1 ,j+1)]
-    count=0
-    for k,v in t:
-        if 0<k<m and 0<v<n and board[k,v]=='M':
-            count+=1
-    if count==0:
-        board[i][j]='B'
+    t = [(i + 1, j), (i - 1, j), (i, j - 1), (i, j + 1), (i, j + 1), (i + 1, j + 1), (i - 1, j - 1), (i - 1, j + 1)]
+    count = 0
+    for k, v in t:
+        if 0 < k < m and 0 < v < n and board[k, v] == 'M':
+            count += 1
+    if count == 0:
+        board[i][j] = 'B'
     else:
-        board[i][j]=str(count)
+        board[i][j] = str(count)
         return
-    for k,v in t:
-        if 0<k<m and 0<v<n :
-            dfs1(k,v,m,n,board,directions)
+    for k, v in t:
+        if 0 < k < m and 0 < v < n:
+            dfs1(k, v, m, n, board, directions)

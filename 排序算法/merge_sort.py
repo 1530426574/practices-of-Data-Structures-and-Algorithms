@@ -1,32 +1,55 @@
 def merge_sort(arr):
     length = len(arr)
     if length > 1:
-
         mid = length // 2
         l = arr[:mid]
         r = arr[mid:]
         merge_sort(l)
         merge_sort(r)
+        merge(arr, l, r)
 
-        i = j = k = 0
-        while i < len(l) and j < len(r):
-            if l[i] < r[j]:
-                arr[k] = l[i]  # 谁小就先填谁
-                i += 1  # 填完之后+1,为了比较后面的
-            else:
-                arr[k] = r[j]
-                j += 1
-            k += 1  # 往arr里填空
+        # i = j = k = 0
+        # m, n  = len(l), len(r)
+        # while i < m and j < n :
+        #     if l[i] < r[j]:
+        #         arr[k] = l[i]  # 谁小就先填谁
+        #         i += 1  # 填完之后+1,为了比较后面的
+        #     else:
+        #         arr[k] = r[j]
+        #         j += 1
+        #     k += 1  # 往arr里填空 k = i +j     #k 这个位置是下一位，没有填，同理，i, j也是
+        #
+        # if i < m:
+        #     arr[k:] = l[i:]
+        # if j < n:
+        #     arr[k:] = r[j:]
 
-        while i < len(l):  # 填后面剩余的
-            arr[k] = l[i]
-            i += 1
-            k += 1
 
-        while j < len(r):
-            arr[k] = r[j]
+def merge(nums, nums1, nums2):
+    i = j = k = 0
+    m, n = len(nums1), len(nums2)
+    while i < m and j < n:
+        if nums1[i] < nums2[j]:
+            nums[k] = nums1[i]  # 谁小就先填谁
+            i += 1  # 填完之后+1,为了比较后面的
+        else:
+            nums[k] = nums2[j]
             j += 1
-            k += 1
+        k += 1  # 往arr里填空 k = i +j     #k 这个位置是下一位，没有填，同理，i, j也是
+    if i < m:
+        nums[k:] = nums1[i:]
+    if j < n:
+        nums[k:] = nums2[j:]
+
+        # while i < len(l):  # 填后面剩余的
+        #     arr[k] = l[i]
+        #     i += 1
+        #     k += 1
+
+        # while j < len(r):
+        #     arr[k] = r[j]
+        #     j += 1
+        #     k += 1
 
 
 # # Python program for implementation of MergeSort
@@ -61,6 +84,14 @@ def merge_sort(arr):
 #             arr[k] = R[j]
 #             j += 1
 #             k += 1
+
+MergeSort(A, p, r):
+if p > r
+    return
+q = (p + r) / 2
+mergeSort(A, p, q)
+mergeSort(A, q + 1, r)
+merge(A, p, q)
 
 
 # Code to print the list

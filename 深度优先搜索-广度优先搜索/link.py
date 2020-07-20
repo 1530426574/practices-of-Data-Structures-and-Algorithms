@@ -3,7 +3,7 @@
 DFS 代码模板（递归写法、非递归写法） https://shimo.im/docs/ddgwCccJQKxkrcTq/read
 BFS 代码模板 https://shimo.im/docs/P8TqKHGKt3ytkYYd/read
 """
-#标准广度优先搜索的终止条件就是找到结束单词。
+# 标准广度优先搜索的终止条件就是找到结束单词。
 """
 实战题目
 https://leetcode-cn.com/problems/binary-tree-level-order-traversal/#/description
@@ -16,5 +16,3 @@ https://leetcode-cn.com/problems/word-ladder-ii/description/
 https://leetcode-cn.com/problems/number-of-islands/
 https://leetcode-cn.com/problems/minesweeper/description/
 """
-
-

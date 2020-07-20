@@ -100,13 +100,3 @@ class Solution:
     # 一维 -> 二维
     def one_to_two(self, index, cols=3):
         return index // cols, index % cols
-
-
-
-
-
-
-
-
-
-

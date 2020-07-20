@@ -1,5 +1,5 @@
 class Solution:
-    #top down
+    # top down
     def minimumTotal(self, triangle: list) -> int:
         """
         关键在哪呢？？？
@@ -21,52 +21,39 @@ class Solution:
         res = [[0 for _ in range(len(row))] for row in triangle]
         res[0][0] = triangle[0][0]
 
-        for i in range(1,len(triangle)):
+        for i in range(1, len(triangle)):
             for j in range(len(triangle[i])):
                 if j == 0:
-                    res[i][j] = res[i-1][j]+triangle[i][j]                          #存储中间状态
-                elif  j == len(triangle[i])-1:
-                    res[i][j] = res[i-1][j-1]+triangle[i][j]
+                    res[i][j] = res[i - 1][j] + triangle[i][j]  # 存储中间状态
+                elif j == len(triangle[i]) - 1:
+                    res[i][j] = res[i - 1][j - 1] + triangle[i][j]
                 else:
-                    res[i][j] = min(res[i-1][j-1],res[i-1][j])+triangle[i][j]        #递推公式           #最优解，中途淘汰次优解
+                    res[i][j] = min(res[i - 1][j - 1], res[i - 1][j]) + triangle[i][j]  # 递推公式           #最优解，中途淘汰次优解
         return min(res[-1])
 
-
-    #bottom up
-    def mininumtotal2(self,triangle):
+    # bottom up
+    def mininumtotal2(self, triangle):
         if not triangle:
             return
         res = triangle[-1]
-        for i in range(len(triangle)-2,-1,-1):
+        for i in range(len(triangle) - 2, -1, -1):
             for j in range(triangle[i]):
-                res[j] = min(res[j],res[j+1])+triangle[i][j]
+                res[j] = min(res[j], res[j + 1]) + triangle[i][j]
         return res[0]
-
 
     # bottom up 更好理解
     def mininumtotal3(self, triangle):
         if not triangle:
             return
 
-        res = [[0 for i in range(len(row))]for row in triangle]
+        res = [[0 for i in range(len(row))] for row in triangle]
         res[-1] = triangle[-1]
 
         for i in range(len(triangle) - 2, -1, -1):
             for j in range(triangle[i]):
-                res[i][j] = min(res[i+1][j], res[i+1][j + 1]) + triangle[i][j]
+                res[i][j] = min(res[i + 1][j], res[i + 1][j + 1]) + triangle[i][j]
 
         return res[0][0]
-
-
-
-
-
-
-
-
-
-
-
 
 # a = []
 # for row in triangle:

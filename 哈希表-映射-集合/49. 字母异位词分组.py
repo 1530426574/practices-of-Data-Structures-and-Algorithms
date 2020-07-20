@@ -19,8 +19,10 @@ class Solution1:
             d[tuple(sorted(s))].append(s)
         return d.values()
 
+
 print(tuple(sorted('abc')))
 print(tuple(sorted('bac')))
+
 
 class Solution2:
     def groupAnagrams(self, strs: list):
@@ -39,17 +41,18 @@ class Solution2:
     # count = [0] * 26  统计字母出现的频率
     # for i in s: #abcdeab  k
     #    count[ord(i) - ord('a')] += 1
-    def counter(self, s: str):   # 26 * k
+    def counter(self, s: str):  # 26 * k
         return (s.count(i) for i in string.ascii_lowercase)
 
-    def counter2(self, s: str):   # k
+    def counter2(self, s: str):  # k
         count = 26 * [0]
-        for i in s:      #abcb
-            count[ord(i) - ord('a')] += 1  #找到各自的位置。
+        for i in s:  # abcb
+            count[ord(i) - ord('a')] += 1  # 找到各自的位置。
         return count
 
-#[0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-#填空
+
+# [0, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+# 填空
 
 print(ord('a'))
 print(ord('b'))
@@ -60,9 +63,3 @@ for i in 'abcdefghijklmnopqrstuvwxyz':
     print(i)
     a.append(s.count(i))
 print(a)
-
-
-
-
-
-

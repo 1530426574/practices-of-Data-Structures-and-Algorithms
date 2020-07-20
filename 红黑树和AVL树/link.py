@@ -1,20 +1,9 @@
 """
 本周作业
 简单
-https://leetcode-cn.com/problems/climbing-stairs/
+
 中等
-https://leetcode-cn.com/problems/implement-trie-prefix-tree/#/description
-https://leetcode-cn.com/problems/friend-circles
-https://leetcode-cn.com/problems/number-of-islands/
-https://leetcode-cn.com/problems/surrounded-regions/
-https://leetcode-cn.com/problems/valid-sudoku/description/
-https://leetcode-cn.com/problems/generate-parentheses/
-https://leetcode-cn.com/problems/word-ladder/
-https://leetcode-cn.com/problems/minimum-genetic-mutation/
 困难
-https://leetcode-cn.com/problems/word-search-ii/
-https://leetcode-cn.com/problems/n-queens
-https://leetcode-cn.com/problems/sudoku-solver/#/description
 下周预习
 预习知识点：
 位图：如何实现网页爬虫中的 URL 去重功能？

@@ -1,5 +1,5 @@
 class Solution:
-    #[1,2,3,4,5,6,7]
+    # [1,2,3,4,5,6,7]
     def maxArea(self, height: list) -> int:
         """
 
@@ -25,8 +25,8 @@ class Solution:
 
 #  优化
 class Solution1:
-    #本质还是 排列组合做选择，区别就是怎么选择，选择的规则是什么。
-    #其实本质就是向内移动短板，才有可能的到最大面积。
+    # 本质还是 排列组合做选择，区别就是怎么选择，选择的规则是什么。
+    # 其实本质就是向内移动短板，才有可能的到最大面积。
     def maxArea(self, height: list) -> int:
         l, r, res = 0, len(height) - 1, 0
         while l < r:
@@ -37,5 +37,3 @@ class Solution1:
                 res = max(res, height[r] * (r - l))
                 r -= 1
         return res
-
-

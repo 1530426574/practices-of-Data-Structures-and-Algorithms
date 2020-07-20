@@ -55,6 +55,7 @@ class Solution:
 
         return matchedWords
 
+
 #
 # class TrieNode():
 #     def __init__(self):
@@ -85,7 +86,7 @@ class Trie:
     def __init__(self):
         self.trie = {}
 
-#apply ,apple
+    # apply ,apple
     def insert(self, word):
         """
         关键在哪呢？？？t = t[w]
@@ -101,7 +102,7 @@ class Trie:
         t['#'] = word
         return self.trie
 
-#apply
+    # apply
     def search(self, word):
         t = self.trie
         for w in word:
@@ -112,7 +113,7 @@ class Trie:
             return True
         return False
 
-#app
+    # app
     def startsWith(self, prefix):
         t = self.trie
         for w in prefix:
@@ -120,6 +121,7 @@ class Trie:
                 return False
             t = t[w]
         return True
+
 
 class Solution(object):
     def findWords(self, board, words):
@@ -133,8 +135,7 @@ class Solution(object):
                 self.dfs(board, d, i, j, "", res)
         return res
 
-
-    def dfs(self, board, d:dict, i, j, path, res):
+    def dfs(self, board, d: dict, i, j, path, res):
         if d.get('#'):
             res.append(path)
             d['#'] = {}
@@ -143,13 +144,12 @@ class Solution(object):
         d = d.get(board[i][j])
         if not d:
             return
-        tmp,board[i][j] = board[i][j],"visited"
+        tmp, board[i][j] = board[i][j], "visited"
         self.dfs(board, d, i + 1, j, path + tmp, res)
         self.dfs(board, d, i - 1, j, path + tmp, res)
         self.dfs(board, d, i, j - 1, path + tmp, res)
         self.dfs(board, d, i, j + 1, path + tmp, res)
         board[i][j] = tmp
-
 
 
 # n = 6
@@ -164,7 +164,7 @@ class Solution1:
     def __init__(self):
         self.parent = [i for i in range(len(M))]
 
-    def find_root(self,i):
+    def find_root(self, i):
         root = i
         while self.parent[root] != i:
             root = self.parent[root]
@@ -174,15 +174,16 @@ class Solution1:
             parent[x] = root
         return root
 
-    def union(self,i,j):
+    def union(self, i, j):
         root1 = self.find_root(i)
         root2 = self.find_root(j)
         self.parent[root1] = root2
+
     def findCircleNum(self, M: list) -> int:
         for i in range(len(M)):
             for j in range(len(M[i])):
-                if M[i][j] ==1 :
-                    self.union(i,j)
+                if M[i][j] == 1:
+                    self.union(i, j)
 
         return len(set(self.parent))
 

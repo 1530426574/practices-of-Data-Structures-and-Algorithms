@@ -3,7 +3,8 @@ class TreeNode:
         self.val = x
         self.left, self.right = None, None
 
-class Solution:#36ms
+
+class Solution:  # 36ms
     def preorderTraversal(self, root: TreeNode) -> list:
         """
         关键在哪呢？“压栈“顺序，先压right，再压left，这样先弹出left,再弹出right
@@ -14,7 +15,7 @@ class Solution:#36ms
         stack = [root]
         while stack:
             root = stack.pop()
-            if root:                      #Nonetype object dose not have value
+            if root:  # Nonetype object dose not have value
                 res.append(root.val)
                 stack.append(root.right)
                 stack.append(root.left)

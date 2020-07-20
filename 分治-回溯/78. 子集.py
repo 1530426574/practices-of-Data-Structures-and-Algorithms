@@ -1,12 +1,13 @@
-class Solution:#36ms
-    def subsets(self, nums: list) :
+class Solution:  # 36ms
+    def subsets(self, nums: list):
         length = len(nums)
         res = [[]]
-        for i in nums: #1 2 3              #为什么不是cur.append(i),因为cur.append(i)返回的None
-            res+=[cur +[i] for cur in res] #[1]    -?res=[[],[1]]
-                                        # [[2],[1,2]] ->[[],[1],[2],[1,2]]
-                                        #[[3],[1,3],[2,3],[1,2,3]]->[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+        for i in nums:  # 1 2 3              #为什么不是cur.append(i),因为cur.append(i)返回的None
+            res += [cur + [i] for cur in res]  # [1]    -?res=[[],[1]]
+            # [[2],[1,2]] ->[[],[1],[2],[1,2]]
+            # [[3],[1,3],[2,3],[1,2,3]]->[[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
         return res
+
 
 """
 输入: nums = [1,2,3]
@@ -26,19 +27,21 @@ class Solution:#36ms
 幂集是所有长度从 0 到 n 所有子集的组合。
 说明：解集不能包含重复的子集。
 """
+
+
 class Solution1:
-    def subsets(self, nums:list) -> list:
+    def subsets(self, nums: list) -> list:
         def backtrack(index, path, k):
             # if the combination is done
             if len(path) == k:
                 res.append(path[:])
-            for i in range(index, n):   #啊啊啊，我忘了，回溯最关键的点是选择列表。为什么不是len(nums)
+            for i in range(index, n):  # 啊啊啊，我忘了，回溯最关键的点是选择列表。为什么不是len(nums)
                 # add nums[i] into the current combination
                 path.append(nums[i])
                 # use next integers to complete the combination
-                backtrack(i + 1, path, k)  #这里新的选择列表为什么不是nums[:i]+nums[i+1:]???这个表达式的意思是，选择了后面的，还可以选择前面的，
+                backtrack(i + 1, path, k)  # 这里新的选择列表为什么不是nums[:i]+nums[i+1:]???这个表达式的意思是，选择了后面的，还可以选择前面的，
                 # backtrack                #比如k=2时，i = 1 ->path [1,2][1,3]; i=2 ->path[2,1],[2,3]
-                path.pop()                 #现在的情况是k=2时，i =1 ->path[1,2][1,3] ;i =2 ->path[2,3],不重复前面的选择。
+                path.pop()  # 现在的情况是k=2时，i =1 ->path[1,2][1,3] ;i =2 ->path[2,3],不重复前面的选择。
 
         res = []
         n = len(nums)
@@ -50,20 +53,21 @@ class Solution1:
 
 
 class Solution1:
-    def subsets(self, nums: list) :
-        def backtrace(nums,path,k):
-            if len(path) ==k:
+    def subsets(self, nums: list):
+        def backtrace(nums, path, k):
+            if len(path) == k:
                 res.append(path[:])
-            for i in range(index,length):
+            for i in range(index, length):
                 path.append(i)
-                backtrace(index+1,path,k)
+                backtrace(index + 1, path, k)
                 path.pop(i)
-        res = []  #1 2 3 4
-        length=len(nums)
-        for k in range(length+1):
-            path =[]
-            index =0
-            backtrace(index,path,k)
+
+        res = []  # 1 2 3 4
+        length = len(nums)
+        for k in range(length + 1):
+            path = []
+            index = 0
+            backtrace(index, path, k)
         return res
 
 

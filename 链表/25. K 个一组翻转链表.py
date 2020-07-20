@@ -24,7 +24,7 @@ class Solution1:
             # 遍历出4
             count = 0
             while r and count < k:
-                count += 1     # (1,head) (2,2）（3,3）（4,4）(5,5)(5,None)    2
+                count += 1  # (1,head) (2,2）（3,3）（4,4）(5,5)(5,None)    2
                 r = r.next
             if count == k:
                 # dumpy -> 1 -> 2 -> 3 -> 4 -> 5

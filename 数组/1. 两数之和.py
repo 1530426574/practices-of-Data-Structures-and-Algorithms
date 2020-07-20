@@ -16,7 +16,7 @@ class Solution:
         for i in range(10):
             if nums[i] not in d:  # O(1)nums[i] ！=target-nums[j]
                 d[target - nums[i]] = i
-            else:# 等价于nums[i] =target-nums[j]
+            else:  # 等价于nums[i] =target-nums[j]
                 return [i, d[nums[i]]]
 
 

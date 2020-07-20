@@ -13,15 +13,10 @@ class Solution:
         """
         length = len(nums)
         j = 0
-        for i in range(1,length):
+        for i in range(1, length):
             if nums[i] == nums[j]:
                 continue
             j += 1
             nums[j] = nums[i]
             # a[j],a[i] = a[i],a[j]
         return j + 1
-
-
-
-
-

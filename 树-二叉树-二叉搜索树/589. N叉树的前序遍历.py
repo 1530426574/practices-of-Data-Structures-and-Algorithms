@@ -23,7 +23,7 @@ class Solution:
 
 
 # 递归 72ms
-class Solution1:#N叉树的前序遍历
+class Solution1:  # N叉树的前序遍历
     def preorder(self, root: TreeNode) -> list:
         # if root is None:
         #     return []

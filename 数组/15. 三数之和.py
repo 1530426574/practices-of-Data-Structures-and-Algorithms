@@ -32,9 +32,9 @@ https://leetcode-cn.com/problems/3sum/
                     r -= 1
                 else:
                     res.append([nums[i], nums[l], nums[r]])
-                    while l < r and nums[l] == nums[l + 1]:    #[-4,-1,0,0,0,4]
+                    while l < r and nums[l] == nums[l + 1]:  # [-4,-1,0,0,0,4]
                         l += 1
-                    while l < r and nums[r] == nums[r - 1]:    # [-4,-1, 0,0,0,0,1，2，3，4,4,4,4]
+                    while l < r and nums[r] == nums[r - 1]:  # [-4,-1, 0,0,0,0,1，2，3，4,4,4,4]
                         r -= 1
                     l += 1
                     r -= 1

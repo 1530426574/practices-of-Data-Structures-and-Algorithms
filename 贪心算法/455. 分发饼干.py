@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def findContentChildren(self, g: List[int], s: List[int]) -> int:
         """
@@ -14,15 +16,11 @@ class Solution:
         i = 0
         j = 0
         res = 0
-        while i<len(g) and j <len(s):#同时遍历但不一定同步遍孩子和饼干
-            if s[j]>=g[i]: #如果当前饼干能够满足当前孩子胃口，则判断下个饼干和下个孩子
-                j+=1
-                i+=1
-                res+=1
-            else: #如果当前饼干不能满足当前孩子的胃口，就开始遍历下一个饼干
-                j+=1
+        while i < len(g) and j < len(s):  # 同时遍历但不一定同步遍孩子和饼干
+            if s[j] >= g[i]:  # 如果当前饼干能够满足当前孩子胃口，则判断下个饼干和下个孩子
+                j += 1
+                i += 1
+                res += 1
+            else:  # 如果当前饼干不能满足当前孩子的胃口，就开始遍历下一个饼干
+                j += 1
         return res
-
-
-
-

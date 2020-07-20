@@ -1,19 +1,22 @@
 from typing import List
-class Solution: #0 1 2 3 4 5 6 7
+
+
+class Solution:  # 0 1 2 3 4 5 6 7
     def countBits(self, num: int) -> List[int]:
         a = [0] * num
-        for i in range(1,num):
+        for i in range(1, num):
             a[i] = self.pop_count(i)
         return a
 
-    def pop_count(self,n):
+    def pop_count(self, n):
         sum = 0
         while n:
             sum += 1
-            n &= (n-1)
+            n &= (n - 1)
         return sum
 
-class Solution1: #0 1 2 3 4 5 6 7
+
+class Solution1:  # 0 1 2 3 4 5 6 7
     def countBits(self, num: int) -> List[int]:
         """
         关键在于：
@@ -29,11 +32,12 @@ class Solution1: #0 1 2 3 4 5 6 7
             counter[i] = counter[i >> 1] + i % 2
         return counter
 
+
 class Solution2:
     def countBits(self, num):
         counters = [0] * (num + 1)
         for i in range(1, num + 1):
-            counters[i] = counters[i & (i-1)] +1
+            counters[i] = counters[i & (i - 1)] + 1
         return counters
 
 # class Solution:
@@ -49,7 +53,7 @@ class Solution2:
 
 
 # def countBits(self, num: int) -> List[int]:
-    # counter = [0]
-    # for i in range(1, num+1):
-    #     counter.append(counter[i >> 1] + i % 2)
-    # return counter
+# counter = [0]
+# for i in range(1, num+1):
+#     counter.append(counter[i >> 1] + i % 2)
+# return counter

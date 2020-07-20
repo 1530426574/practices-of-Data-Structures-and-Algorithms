@@ -1,5 +1,5 @@
 # https://leetcode-cn.com/problems/largest-rectangle-in-histogram/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-1-7/
-#60ms
+# 60ms
 class Solution:
     def largestRectangleArea(self, heights: list) -> int:
         """
@@ -9,7 +9,7 @@ class Solution:
         关键在哪呢？？？
         面积什么时候能够确定下来。
         """
-        #[2, 1, 5, 6, 2, 3, 0]
+        # [2, 1, 5, 6, 2, 3, 0]
 
         heights.append(0)
         stack = [-1]
@@ -67,7 +67,8 @@ class Solution:
 
         return res
 
-#72ms
+
+# 72ms
 class Solution2:
     def largestRectangleArea(self, heights: list) -> int:
         """
@@ -94,7 +95,8 @@ class Solution2:
         print(ans)
         return ans
 
-#64ms
+
+# 64ms
 class Solution4:
     def largestRectangleArea(self, heights: List[int]) -> int:
         heights.append(0)
@@ -103,24 +105,6 @@ class Solution4:
         length = len(heights)
         for i in range(length):
             while heights[i] < stack[-1][1]:
-                ans = max(ans, (stack.pop()[1]) * (i -  stack[-1][0] - 1))
+                ans = max(ans, (stack.pop()[1]) * (i - stack[-1][0] - 1))
             stack.append((i, heights[i]))
         return ans
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

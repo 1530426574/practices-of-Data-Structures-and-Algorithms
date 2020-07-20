@@ -15,7 +15,7 @@ class Solution1:
         :param head:
         :return:
         """
-        s = set()    #很神奇的方法
+        s = set()  # 很神奇的方法
         while head:
             if head not in s:
                 s.add(head)

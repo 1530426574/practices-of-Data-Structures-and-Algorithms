@@ -54,7 +54,7 @@ def test_moveZeroes(nums):
             print('---', nums[i], nums[j])
             j += 1
     print(nums)
-    return  nums
+    return nums
 
 
 test_moveZeroes([1, 2, 3, 4, 0, 5])

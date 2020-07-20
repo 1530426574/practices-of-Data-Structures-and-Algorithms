@@ -1,5 +1,7 @@
 from typing import List
-class Solution:                      # 这道题，子问题竟然和母问题有自相似性。
+
+
+class Solution:  # 这道题，子问题竟然和母问题有自相似性。
     def search(self, nums: List[int], target: int) -> int:
         if not nums:
             return -1
@@ -8,17 +10,19 @@ class Solution:                      # 这道题，子问题竟然和母问题�
             mid = (l + r) // 2
             if nums[mid] == target:
                 return mid
-            if nums[0] <= nums[mid]: # 是为了确定哪一部分是有序的，前面
+            if nums[0] <= nums[mid]:  # 是为了确定哪一部分是有序的，前面
                 if nums[0] <= target < nums[mid]:
                     r = mid - 1
                 else:
                     l = mid + 1
-            else:                   # mid后面是有序的。
+            else:  # mid后面是有序的。
                 if nums[mid] < target <= nums[len(nums) - 1]:
                     l = mid + 1
                 else:
                     r = mid - 1
         return -1
+
+
 class Solution1:
     def search(self, nums: List[int], target: int) -> int:
         if not nums:

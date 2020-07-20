@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def canJump(self, nums: List[int]) -> bool:
         """
@@ -11,11 +13,10 @@ class Solution:
         [1,0,0,0,4]
         """
 
-        length,rightmost=len(nums),0
+        length, rightmost = len(nums), 0
         for i in range(length):
-            if i <= rightmost:                       #先判断当前位置是否可达到
-                rightmost = max(rightmost,i+nums[i]) #若是能够到达，最远到达的位置
-                if rightmost >= (length-1):          #最远到达的位置是不是最后一个位置
-                    return True                      #若是就返回True
-        return  False
-
+            if i <= rightmost:  # 先判断当前位置是否可达到
+                rightmost = max(rightmost, i + nums[i])  # 若是能够到达，最远到达的位置
+                if rightmost >= (length - 1):  # 最远到达的位置是不是最后一个位置
+                    return True  # 若是就返回True
+        return False

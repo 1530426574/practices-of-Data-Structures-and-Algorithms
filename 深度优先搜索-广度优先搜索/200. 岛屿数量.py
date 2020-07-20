@@ -13,23 +13,24 @@ grid = [ 1 ,  1 ,  1,
 dril down   
 图如何实现遍历子节点。
 """
-#高手DFS
+
+
+# 高手DFS
 def numIslands(self, grid):
     def sink(i, j):
         if 0 <= i < len(grid) and 0 <= j < len(grid[i]) and grid[i][j] == '1':
             grid[i][j] = '0'
-            map(sink, (i+1, i-1, i, i), (j, j, j+1, j-1))
+            map(sink, (i + 1, i - 1, i, i), (j, j, j + 1, j - 1))
             return 1
         return 0
+
     return sum(sink(i, j) for i in range(len(grid)) for j in range(len(grid[i])))
 
 
-
-
-
-
-#普通
+# 普通
 from collections import deque
+
+
 class Solution:
     def numIslands(self, grid: list) -> int:
         if not grid:
@@ -38,17 +39,18 @@ class Solution:
         check = [[False for _ in range(len(grid[0]))] for _ in range(len(grid))]
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] =='1' and check[i][j]== False:
+                if grid[i][j] == '1' and check[i][j] == False:
                     count += 1
-                    self.search(grid,check,i,j)
+                    self.search(grid, check, i, j)
         return count
-    def search(self,grid,check,i,j):
-        qu = deque([(i,j)])
+
+    def search(self, grid, check, i, j):
+        qu = deque([(i, j)])
         while qu:
             i, j = qu.popleft()
-            if 0<=i<len(grid) and 0<=j<len(grid[0]) and grid[i][j]=='1' and check[i][j]==False:
+            if 0 <= i < len(grid) and 0 <= j < len(grid[0]) and grid[i][j] == '1' and check[i][j] == False:
                 check[i][j] = True
-                qu.extend([(i-1,j),(i+1,j),(i,j-1),(i,j+1)])
+                qu.extend([(i - 1, j), (i + 1, j), (i, j - 1), (i, j + 1)])
 
 
 from typing import List
@@ -98,4 +100,3 @@ if __name__ == '__main__':
     solution = Solution()
     result = solution.numIslands(grid)
     print(result)
-
