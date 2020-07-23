@@ -3,6 +3,6 @@ def match_table(char):
     table = [0] * length
     index = 1
 
-    while index < length :
+    while index < length:
         samelen = 0
-        while char[:samelen+1]
+        while char[:samelen + 1]

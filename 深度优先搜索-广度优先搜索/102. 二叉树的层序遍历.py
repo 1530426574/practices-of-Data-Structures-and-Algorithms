@@ -1,28 +1,31 @@
-class  TreeNode:
-    def __init__(self,x):
+class TreeNode:
+    def __init__(self, x):
         self.val = x
-        self.left,self.right =None,None
+        self.left, self.right = None, None
 
-#递归
-#首先最核心的代码还是树节点的遍历，深度优先遍历和广度优先遍历，这道题的关键在于，怎么判断和存储每一层的节点
-#dfs
-class Solution:#40ms
-    def levelOrder(self, root: TreeNode) -> list:      #递归的本质就是调用自身函数，函数的本质就是压栈与出栈。
-        def dfs(root,level):
-            if not root:                  #001 terminator
+
+# 递归
+# 首先最核心的代码还是树节点的遍历，深度优先遍历和广度优先遍历，这道题的关键在于，怎么判断和存储每一层的节点
+# dfs
+class Solution:  # 40ms
+    def levelOrder(self, root: TreeNode) -> list:  # 递归的本质就是调用自身函数，函数的本质就是压栈与出栈。
+        def dfs(root, level):
+            if not root:  # 001 terminator
                 return
-            if len(res)<level:            #002  process current level
-                res.append([])            #最关键的 ，没有就新建，有的话就直接添加或者访问！！！！
-            res[level-1].append(root.val) #当前层逻辑如何处理，
-            dfs(root.left,level+1)        #003 dril down
-            dfs(root.right,level+1)
-                                          #004 reverse  the curreent status if needed
+            if len(res) < level:  # 002  process current level
+                res.append([])  # 最关键的 ，没有就新建，有的话就直接添加或者访问！！！！
+            res[level - 1].append(root.val)  # 当前层逻辑如何处理，
+            dfs(root.left, level + 1)  # 003 dril down
+            dfs(root.right, level + 1)
+            # 004 reverse  the curreent status if needed
+
         res = []
-        dfs(root,1)
+        dfs(root, 1)
         return res
 
-#DFS，preorder
-class Solution1:#44ms
+
+# DFS，preorder
+class Solution1:  # 44ms
     def levelOrder(self, root: TreeNode) -> list:
         """
         关键在哪呢？？？访问节点的时候，节点的层数是知道的，
@@ -41,15 +44,15 @@ class Solution1:#44ms
         while stack:
             root, level = stack.pop()
             if root:
-                if len(res) < level: #这一步，也挺难想到的，不是么？？？
+                if len(res) < level:  # 这一步，也挺难想到的，不是么？？？
                     res.append([])
-                res[level - 1].append(root.val) #根据level来索引找到对应的层盒子，每个节点的值应该放在哪
+                res[level - 1].append(root.val)  # 根据level来索引找到对应的层盒子，每个节点的值应该放在哪
                 stack.append((root.right, level + 1))
                 stack.append((root.left, level + 1))
         return res
         # DFS + stack I
 
-    def levelOrder2(self, root):#40ms
+    def levelOrder2(self, root):  # 40ms
         if not root:
             return []
         res, stack = [], [(root, 0)]
@@ -65,7 +68,7 @@ class Solution1:#44ms
         return res
 
 
-class Solution2:#48ms
+class Solution2:  # 48ms
     def levelOrder(self, root: TreeNode) -> list:
         res, queue = [], [(root, 0)]
         while queue:
@@ -78,8 +81,9 @@ class Solution2:#48ms
                 queue.append((root.right, level + 1))
 
         return res
+
     # BFS + deque
-    def levelOrder2(self, root):#44ms
+    def levelOrder2(self, root):  # 44ms
         from collections import deque
         res, queue = [], deque([(root, 0)])
         while queue:
@@ -91,7 +95,3 @@ class Solution2:#48ms
                 queue.append((curr.left, level + 1))
                 queue.append((curr.right, level + 1))
         return res
-
-
-
-

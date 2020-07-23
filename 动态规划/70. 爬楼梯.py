@@ -33,6 +33,8 @@ def climbstairs2(n):
 
 # top down
 d = {1: 1, 2: 2}
+
+
 def climbstairs3(n):
     if n == 1:
         return 1

@@ -1,96 +1,100 @@
 from typing import List
 from pprint import pprint
 
+
 class Solution1:
     def solveNQueens(self, n: int) -> List[List[str]]:
-        if n < 1:return []
+        if n < 1: return []
         self.result = []
-        self.dfs(n,0,[],set(),set(),set())
+        self.dfs(n, 0, [], set(), set(), set())
         return [["." * j + "Q" + "." * (n - j - 1) for j in path] for path in self.result]
 
-    def dfs(self,n,row,path:list,cols:set,pie:set,na:set):
+    def dfs(self, n, row, path: list, cols: set, pie: set, na: set):
         if row >= n:
             self.result.append(path)
             return
         for col in range(n):
-            if col in cols or row+col in pie or row-col in na:
+            if col in cols or row + col in pie or row - col in na:
                 continue
-            self.dfs(n,row+1,path+[col],cols.union({col}),pie.union({row+col}),na.union({row-col}))
+            self.dfs(n, row + 1, path + [col], cols.union({col}), pie.union({row + col}), na.union({row - col}))
 
 
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        if n < 1: return []
+        self.result = []
+        self.dfs(n, 0, [], [], [], [])
+        return self.generate_result(self.result, n)
 
-
-
-
-
-
+    def dfs(self, n, i, path, cols, pie, na):
+        if i == n:
+            self.result.append(path[:])
+        for j in range(n):
+            if j not in cols or i + j not in pie or j - i not in na:
+                self.dfs(i + 1, n, path + [j], cols + [j], pie + [i + j], na + [j - i])
 
 
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
 
-        if n < 1:return []
+        if n < 1: return []
         self.result = []
         self.cols, self.pie, self.na = set(), set(), set()
-        self.dfs(n,0,[])
-        return self.generate_result(self.result,n)
+        self.dfs(n, 0, [])
+        return self.generate_result(self.result, n)
 
-    def dfs(self,n,row,path):
+    def dfs(self, n, row, path):
         if row >= n:
             self.result.append(path)
             return
         for col in range(n):
-            if col in self.cols or row+col in self.pie or row-col in self.na:
+            if col in self.cols or row + col in self.pie or row - col in self.na:
                 continue
             self.cols.add(col)
-            self.pie.add(row+col)
-            self.na.add(row-col)
-            self.dfs(n,row+1,path+[col])
+            self.pie.add(row + col)
+            self.na.add(row - col)
+            self.dfs(n, row + 1, path + [col])
             self.cols.remove(col)
-            self.pie.remove(row+col)
-            self.na.remove(row-col)
+            self.pie.remove(row + col)
+            self.na.remove(row - col)
 
-    def generate_result(self,result,n):
-        print(1,result)
+    def generate_result(self, result, n):
+        print(1, result)
         return [["." * i + "Q" + "." * (n - i - 1) for i in sol] for sol in result]
         # return ["." * result[i] + "Q" + "." * (n - result[i] - 1) for i in range(n)]
 
 
-
-
-
 class Solution1s:
-    def solveNQueens(self, n: int) :
-        if  n < 1 :return []
+    def solveNQueens(self, n: int):
+        if n < 1: return []
         self.result = []
         self.cols, self.pie, self.na = set(), set(), set()
         row = 0
         path = []
-        self.dfs(row,path,n)
-        return self.generate_result(self.result,n)
+        self.dfs(row, path, n)
+        return self.generate_result(self.result, n)
 
-    def dfs(self,i,path:list,n:int):
-        if i >= n  :
+    def dfs(self, i, path: list, n: int):
+        if i >= n:
             # print('i={},path ={}'.format(i,path))
             self.result.append(path[:])
             return
-
         for j in range(n):
-            if j in self.cols or  i+j in self.pie or i-j in self.na:
+            if j in self.cols or i + j in self.pie or i - j in self.na:
                 continue
             self.cols.add(j)
-            self.pie.add(i+j)
-            self.na.add(i-j)
-            path.append(j)         #路径选择
-            self.dfs(i+1,path,n)   #选择列表 0 -> 1
-            path.pop()              #撤销路径
+            self.pie.add(i + j)
+            self.na.add(i - j)
+            path.append(j)  # 路径选择
+            self.dfs(i + 1, path, n)  # 选择列表 0 -> 1
+            path.pop()  # 撤销路径
 
             self.cols.remove(j)
-            self.pie.remove(i+j)
-            self.na.remove(i-j)
+            self.pie.remove(i + j)
+            self.na.remove(i - j)
 
-    def generate_result(self,result,n):
-        print(1,result)
+    def generate_result(self, result, n):
+        print(1, result)
         return [["." * col + "Q" + "." * (n - col - 1) for col in path] for path in result]
         # return ["." * result[i] + "Q" + "." * (n - result[i] - 1) for i in range(n)]
 

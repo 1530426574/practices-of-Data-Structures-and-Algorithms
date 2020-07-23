@@ -3,6 +3,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution1:
     def swapPairs(self, head: ListNode) -> ListNode:
         """
@@ -42,14 +43,14 @@ class Solution1:
         交换了两个节点以后，返回 secondNode，因为它是交换后的新头。
         在所有节点交换完成以后，我们返回交换后的头，实际上是原始链表的第二个节点
         """
-        if head is None or head.next is None:      # terminator
+        if head is None or head.next is None:  # terminator
             return head
 
-        first = head                               # process current logical
+        first = head  # process current logical
         second = head.next
         # Swapping   1 -> 2 -> 3 -> 4     =>   2->1->3->4
-        first.next = self.swapPairs(second.next)   # dril down
+        first.next = self.swapPairs(second.next)  # dril down
         second.next = first
         # Now the head is the second node
-        return second                              # restore cur status
-#重复子问题
+        return second  # restore cur status
+# 重复子问题

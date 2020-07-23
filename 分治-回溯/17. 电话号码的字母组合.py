@@ -2,6 +2,8 @@
 输入："23"
 输出：["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 """
+
+
 class Solution1:
     def letterCombinations(self, digits):
         if not digits:
@@ -19,7 +21,8 @@ class Solution1:
             for j in dic[digits[i]]:
                 self.dfs(digits, dic, i + 1, path + j, res)
 
-class Solution:#28ms
+
+class Solution:  # 28ms
     def letterCombinations(self, digits: str) -> list:
         if not digits:
             return []
@@ -28,16 +31,18 @@ class Solution:#28ms
         def traceback(index, path):
             if len(path) == len(digits):
                 res.append(path)
-                return                   #为啥有return，要在这里结束？？？？？
-            for c in d[digits[index]]:   #index的作用是为了确定新的选择列表。
-                path+=c
-                traceback(index+1,path)
-                path=path[0:-1]
+                return  # 为啥有return，要在这里结束？？？？？
+            for c in d[digits[index]]:  # index的作用是为了确定新的选择列表。
+                path += c
+                traceback(index + 1, path)
+                path = path[0:-1]
 
         res = []
         path = ""
         traceback(0, path)
         return res
+
+
 class Solution2:
     def letterCombinations(self, digits: str) -> list[str]:
         if not digits: return []
@@ -49,31 +54,31 @@ class Solution2:
         return result
 
 
-class Solution3(object):#队列思想
-	def letterCombinations(self, digits):
-		"""
-		:type digits: str
-		:rtype: List[str]
-		"""
-		if not digits:
-			return []
-		# 一个映射表，第二个位置是"abc“,第三个位置是"def"。。。
-		# 这里也可以用map，用数组可以更节省点内存
-		d = [" ","*","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"]
-		# 先往队列中加入一个空字符
-		res = [""]
-		for i in digits:
-			size = len(res)
-			# 由当前遍历到的字符，取字典表中查找对应的字符串
-			letters = d[ord(i)-48]
-			# 计算出队列长度后，将队列中的每个元素挨个拿出来
-			for _ in range(size):
-				# 每次都从队列中拿出第一个元素
-				tmp = res.pop(0)
-				# 然后跟"def"这样的字符串拼接，并再次放到队列中
-				for j in letters:
-					res.append(tmp+j)
-		return res
+class Solution3(object):  # 队列思想
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        if not digits:
+            return []
+        # 一个映射表，第二个位置是"abc“,第三个位置是"def"。。。
+        # 这里也可以用map，用数组可以更节省点内存
+        d = [" ", "*", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"]
+        # 先往队列中加入一个空字符
+        res = [""]
+        for i in digits:
+            size = len(res)
+            # 由当前遍历到的字符，取字典表中查找对应的字符串
+            letters = d[ord(i) - 48]
+            # 计算出队列长度后，将队列中的每个元素挨个拿出来
+            for _ in range(size):
+                # 每次都从队列中拿出第一个元素
+                tmp = res.pop(0)
+                # 然后跟"def"这样的字符串拼接，并再次放到队列中
+                for j in letters:
+                    res.append(tmp + j)
+        return res
 
 
 class Solution4:
@@ -131,7 +136,7 @@ class Solution6:
             if len(next_digits) == 0:
                 # the combination is done
                 output.append(combination)
-                return   #可加可不加，因为 if else
+                return  # 可加可不加，因为 if else
             # if there are still digits to check
             else:
                 # iterate over all letters which map
@@ -146,20 +151,21 @@ class Solution6:
             backtrack("", digits)
         return output
 
+
 def leetter(digits):
-        if not digits:
-            return []
-        dic = {"2": 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
-        length = len(digits)
+    if not digits:
+        return []
+    dic = {"2": 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
+    length = len(digits)
 
-        def traceback(path, index):
-            if len(path) == length:
-                res.append(path)
-                return
-            for i in dic[str(digits[index])]:
-                traceback(path + i, index + 1)
+    def traceback(path, index):
+        if len(path) == length:
+            res.append(path)
+            return
+        for i in dic[str(digits[index])]:
+            traceback(path + i, index + 1)
 
-        path = ""
-        res = []
-        traceback(path, 0)
-        return res
+    path = ""
+    res = []
+    traceback(path, 0)
+    return res

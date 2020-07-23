@@ -50,7 +50,6 @@ def backtrack(...):
 当触发「结束条件」时，将「路径」记入结果集。************
 """
 
-
 # def add(x):
 #     if x == 0:
 #         return 0
@@ -62,5 +61,5 @@ def backtrack(...):
 """ D.setdefault(k[,d]) -> D.get(k,d), also set D[k]=d if k not in D """
 
 d = {}
-d1 = d.setdefault('a',{})
-print(d1 ,type(d1))
+d1 = d.setdefault('a', {})
+print(d1, type(d1))

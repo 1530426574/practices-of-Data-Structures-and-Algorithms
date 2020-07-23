@@ -1,11 +1,13 @@
-class Solution1:#32ms
+class Solution1:  # 32ms
     def myPow(self, x: float, n: int) -> float:
         return x ** n
 
-class Solution2:#40ms
+
+class Solution2:  # 40ms
     myPow = pow
 
-class Solution3:#40ms
+
+class Solution3:  # 40ms
     def myPow(self, x, n):
         """
         关键在于n为偶数的情况  f(x，n) = f(x*x,n/2)
@@ -15,10 +17,11 @@ class Solution3:#40ms
         if n < 0:
             return 1 / self.myPow(x, -n)
         if n % 2:
-            return x * self.myPow(x, n-1)
-        return self.myPow(x*x, n/2)
+            return x * self.myPow(x, n - 1)
+        return self.myPow(x * x, n / 2)
 
-class Solution4:#36ms
+
+class Solution4:  # 36ms
     def myPow(self, x, n):
         """
         if n & 1 was same as: if n % 2
@@ -36,7 +39,7 @@ class Solution4:#36ms
         return pow
 
 
-class Solution5:#36ms
+class Solution5:  # 36ms
     def myPow(self, x: float, n: int) -> float:
         def quickMul(N):
             if N == 0:
@@ -67,15 +70,15 @@ class Solution6:
         return quickMul(n) if n >= 0 else 1.0 / quickMul(-n)
 
 
-class Solution7:#32ms
+class Solution7:  # 32ms
     def myPow(self, x: float, n: int) -> float:
         if n == 0:
             return 1
-        if n<0:         #需要提前
-            return 1.0 /self.myPow(x,-n)
-        if n%2 ==0:
-            y = self.myPow(x,n//2)
-            return y*y
-        if n%2==1:
-            y = self.myPow(x,n//2)   #x**11= x * (x**5)**2
-            return x*y*y
+        if n < 0:  # 需要提前
+            return 1.0 / self.myPow(x, -n)
+        if n % 2 == 0:
+            y = self.myPow(x, n // 2)
+            return y * y
+        if n % 2 == 1:
+            y = self.myPow(x, n // 2)  # x**11= x * (x**5)**2
+            return x * y * y

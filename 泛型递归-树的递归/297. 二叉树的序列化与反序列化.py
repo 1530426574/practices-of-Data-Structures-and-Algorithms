@@ -1,7 +1,7 @@
 class TreeNode:
-    def __init__(self,x):
+    def __init__(self, x):
         self.val = x
-        self.left,self.right = None,None
+        self.left, self.right = None, None
 
 
 class Codec:
@@ -12,24 +12,24 @@ class Codec:
         :type root: TreeNode
         :rtype: str   1 2 3
         """
-        if not root: return 'None'   #前序遍历
+        if not root: return 'None'  # 前序遍历
         return ','.join([str(root.val), self.serialize(root.left), self.serialize(root.right)])
-
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         :type data: str
         :rtype: TreeNode #[1 ,2 , None ,None, 3 ,None, None]
         """
+
         def rdeserialize(l):
             """ a recursive helper function for deserialization."""
             if l[0] == 'None':
                 l.pop(0)
                 return None
 
-            root = TreeNode(l[0])  #根接下来就是left
+            root = TreeNode(l[0])  # 根接下来就是left
             l.pop(0)
-            root.left  = rdeserialize(l)    #和前序与中序构造二叉树一个逻辑
+            root.left = rdeserialize(l)  # 和前序与中序构造二叉树一个逻辑
             root.right = rdeserialize(l)
             return root
 
@@ -80,7 +80,6 @@ class Codec1:
         if not root: return 'x'
         return root.val, self.serialize(root.left), self.serialize(root.right)
 
-
     def deserialize1(self, data):
         if data[0] == 'x': return None
         node = TreeNode(data[0])
@@ -88,21 +87,20 @@ class Codec1:
         node.right = self.deserialize(data[2])
         return node
 
-#Returning string instead of tuple.
+
+# Returning string instead of tuple.
 class Codec2:
     def serialize(self, root):
         if not root: return 'x'
         return ','.join([str(root.val), self.serialize(root.left), self.serialize(root.right)])
 
     def deserialize(self, data):
-        self.data = data   #self.data 而不是data，self.data 会一直发生变化。omg。
+        self.data = data  # self.data 而不是data，self.data 会一直发生变化。omg。
         if data[0] == 'x': return None
         node = TreeNode(self.data[:self.data.find(',')])
         node.left = self.deserialize(self.data[self.data.find(',') + 1:])
         node.right = self.deserialize(self.data[self.data.find(',') + 1:])
         return node
-
-
 
 
 """
@@ -135,6 +133,7 @@ class Codec3:
         :type data: str
         :rtype: TreeNode
         """
+
         def rdeserialize(l):
             """ a recursive helper function for deserialization."""
             if l[0] == 'None':
@@ -150,4 +149,3 @@ class Codec3:
         data_list = data.split(',')
         root = rdeserialize(data_list)
         return root
-

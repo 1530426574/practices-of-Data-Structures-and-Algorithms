@@ -22,9 +22,3 @@ def force_search(txt, pat):
         if j == m:
             return i
     return -1
-
-
-
-
-
-

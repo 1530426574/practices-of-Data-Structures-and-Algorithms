@@ -11,3 +11,8 @@ https://leetcode-cn.com/problems/friend-circles
 https://leetcode-cn.com/problems/number-of-islands/
 https://leetcode-cn.com/problems/surrounded-regions/
 """
+# 并查集常用来解决连通性的问题，即将一个图中连通的部分划分出来。
+# 并查集的思想就是，同一个连通区域内的所有点的根节点是同一个。
+# 将每个点映射成一个数字。
+# 先假设每个点的根节点就是他们自己，然后我们以此输入连通的点对，
+# 然后将其中一个点的根节点赋成另一个节点的根节点，这样这两个点所在连通区域又相互连通了

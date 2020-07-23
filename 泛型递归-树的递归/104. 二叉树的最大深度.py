@@ -3,12 +3,15 @@
 说明: 叶子节点是指没有子节点的节点
 """
 
+
 class TreeNode:
     def __init__(self, x):
         self.val = x
         self.left, self.right = None, None
+
+
 # Recursively
-class Solution1:# 76 ms,在所有 Python3 提交中击败了13.91%
+class Solution1:  # 76 ms,在所有 Python3 提交中击败了13.91%
     def maxDepth(self, root: TreeNode) -> int:
         if not root:
             return 0
@@ -16,7 +19,9 @@ class Solution1:# 76 ms,在所有 Python3 提交中击败了13.91%
 
     def maxDepth1(self, root):
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) if root else 0
-class Solution2:#40 ms
+
+
+class Solution2:  # 40 ms
     # DFS
     def maxDepth(self, root: TreeNode) -> int:
         """
@@ -33,12 +38,13 @@ class Solution2:#40 ms
             level, root = stack.pop()
             if root:
                 if not root.left and not root.right:
-                    maxdepth = max(maxdepth, level)      #最大深度一定在叶子节点，所以只在叶子节点时进行更新
+                    maxdepth = max(maxdepth, level)  # 最大深度一定在叶子节点，所以只在叶子节点时进行更新
                 stack.append((level + 1, root.right))
                 stack.append((level + 1, root.left))
         return maxdepth
 
-class Solution3:#52 ms
+
+class Solution3:  # 52 ms
     # DFS
     def maxDepth(self, root: TreeNode) -> int:
         """
@@ -54,12 +60,13 @@ class Solution3:#52 ms
         while stack:
             level, root = stack.pop()
             if root:
-                depth = max(depth, level)          #当然也可以每次迭代的时候更新
+                depth = max(depth, level)  # 当然也可以每次迭代的时候更新
                 stack.append((level + 1, root.right))
                 stack.append((level + 1, root.left))
         return depth
 
-class Solution4:  #52ms
+
+class Solution4:  # 52ms
     # BFS + deque
     def maxDepth1(self, root):
         if not root:

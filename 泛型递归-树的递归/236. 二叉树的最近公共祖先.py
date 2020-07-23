@@ -4,17 +4,19 @@ class TreeNode:
         self.left = None
         self.right = None
 
-class Solution1:#76ms
+
+class Solution1:  # 76ms
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        if root in (None,p,q):
+        if root in (None, p, q):
             return root
-        left = self.lowestCommonAncestor(root.left,p,q)
-        right = self.lowestCommonAncestor(root.right,p,q)
-        if  left and right:
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left and right:
             return root
         return left if left else right
 
-class Solution2:#76ms
+
+class Solution2:  # 76ms
     def lowestCommonAncestor1(self, root, p, q):
         """
         关键在于树的遍历，
@@ -27,22 +29,21 @@ class Solution2:#76ms
 
         stack = [root]
         parent = {root: None}
-        while p not in parent or q not in parent:  #==   (root == p) or (root == q):
+        while p not in parent or q not in parent:  # ==   (root == p) or (root == q):
             node = stack.pop()
-            if node.left:                   #为什么是node.left,因为下面要node.left充当了key
+            if node.left:  # 为什么是node.left,因为下面要node.left充当了key
                 parent[node.left] = node
                 stack.append(node.left)
-            if node.right:                  #为什么是node.right,
+            if node.right:  # 为什么是node.right,
                 parent[node.right] = node
-                stack.append(node.right)    #遍历完所有节点，并且保存到了字典中了，node:node.find_parent
+                stack.append(node.right)  # 遍历完所有节点，并且保存到了字典中了，node:node.find_parent
         ancestors = set()
-        while p:                          #先把p,p.parents全部放入一个集合中
+        while p:  # 先把p,p.parents全部放入一个集合中
             ancestors.add(p)
             p = parent[p]
-        while q not in ancestors:        #q,q.parents 去里面找。
+        while q not in ancestors:  # q,q.parents 去里面找。
             q = parent[q]
         return q
-
 
 
 """

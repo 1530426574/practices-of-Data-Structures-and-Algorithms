@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
         """
@@ -13,6 +15,3 @@ class Solution:
             dmax[i] = max(dmax[i - 1] * nums[i], dmin[i - 1] * nums[i], nums[i])
             dmin[i] = min(dmax[i - 1] * nums[i], dmin[i - 1] * nums[i], nums[i])
         return max(dmax)
-
-
-

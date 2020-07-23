@@ -35,7 +35,7 @@ class Solution1:
         001 原来下标为 i 的我们把它放到 (i+k)%length 的位置
         """
         length = len(nums)
-        a = [0] * length    #重新开辟了一个数组
+        a = [0] * length  # 重新开辟了一个数组
         k = k % length  # k>length
         for i in range(length):
             #       输入: [1,2,3,4,5,6,7] 和 k = 3
