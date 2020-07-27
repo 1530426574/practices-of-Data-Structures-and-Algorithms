@@ -135,13 +135,13 @@ class Solution(object):
                 self.dfs(board, d, i, j, "", res)
         return res
 
-    def dfs(self, board, d: dict, i, j, path, res):
+    def dfs(self, board, d: dict, i, j, path, res):  # apple
         if d.get('#'):
             res.append(path)
             d['#'] = {}
         if i < 0 or i >= len(board) or j < 0 or j >= len(board[0]):
             return
-        d = d.get(board[i][j])
+        d = d.get(board[i][j])     # if board[i][j] not in d: return
         if not d:
             return
         tmp, board[i][j] = board[i][j], "visited"
