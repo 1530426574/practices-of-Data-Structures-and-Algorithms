@@ -46,15 +46,14 @@ class UnionFind:
         while self.parents[root] != node:
             root = self.parents[root]
 
-        while self.parents[root] != node:
+        while self.parents[node] != node:
             x = node
-            i = self.parents[x]
+            node = self.parents[x]
             self.parents[x] = root
         return root
 
     def is_connected(self, node1: int, node2: int):
         return self.find_root(node1) == self.find_root(node2)
-
 
 class Solution:
     def solve(self, board: List[List[str]]) -> None:
