@@ -36,7 +36,7 @@ class UnionFind:
 
     def find_root(self, node: int) -> int:
         root = node
-        while self.parents[root] != node:
+        while self.parents[root] != root:
             root = self.parents[root]
 
         while self.parents[node] != node:
@@ -66,17 +66,17 @@ class Solution:
         cols = len(board[0])
         uf = UnionFind(rows * cols + 1)
         dumynode = rows * cols
-        visited = set()
+
         for i in range(rows):
             for j in range(cols):
                 if board[i][j] == 'O' and board[i][j] not  in visited:
-                    visited.add(board[i][j])
+
                     if i == 0 or i == rows - 1 or j == 0 or j == cols - 1:
                         uf.union(self.two_to_one(i, j), dumynode)
                     else:
                         for _i, _j in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                             di, dj = i + _i, j + _j
-                            if board[di][dj] == 'O' and board[di][dj] not in visited and di > 0 and dj > 0 and di < rows - 1 and dj < cols - 1:
+                            if board[di][dj] == 'O'  and di > 0 and dj > 0 and di < rows - 1 and dj < cols - 1:
                                 uf.union(self.two_to_one(di, dj), self.two_to_one(i, j))
 
         for i in range(rows):
