@@ -43,7 +43,8 @@ class Codec1:
         # take care of base cases
         # if a node is empty, add 'x' to string
         # you can set 'x' to any mark as you want
-        if not root: return 'x'
+        if not root:
+            return 'x'
         # preoder(Root->left->right)
         # ex,
         #     1
@@ -68,7 +69,8 @@ class Codec1:
         # (3, (4, 'x', 'x'), (5, 'x', 'x')) -> this is node right
         ########################################################
         # always take care of base case: if the node's value is 'x' then return None
-        if data[0] == 'x': return None
+        if data[0] == 'x':
+            return None
         # create new treenode for node value
         node = TreeNode(data[0])
         # do the recursive to unpack string value
@@ -77,7 +79,8 @@ class Codec1:
         # return the new TreeNode that we just created
 
     def serialize1(self, root):
-        if not root: return 'x'
+        if not root:
+            return 'x'
         return root.val, self.serialize(root.left), self.serialize(root.right)
 
     def deserialize1(self, data):
@@ -115,7 +118,7 @@ class Codec2:
      / \
     4   5
 
-序列化为 "[1,2,3,null,null,4,5]"
+序列化为 "1,2,3,null,null,4,5"
 广度优先搜索（BFS）
 我们按照高度的顺序从上到下逐级扫描树。更高级别的节点将先于较低级别的节点访问。
 深度优先搜索（DFS)

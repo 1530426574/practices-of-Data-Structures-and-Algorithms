@@ -9,6 +9,7 @@ def select_sort(arrs):
         arrs[i], arrs[min_index] = arrs[min_index], arrs[i]
     print(arrs)
 
-
 A = [64, 25, 12, 22, 11]
 select_sort(A)
+
+

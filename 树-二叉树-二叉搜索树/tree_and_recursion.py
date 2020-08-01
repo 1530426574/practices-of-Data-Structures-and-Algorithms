@@ -17,6 +17,7 @@ def recursion(level, param1, param2, ...):
 """
 
 
+
 def recursion(root, level, ):
     # terminator
     if root is None:
@@ -41,9 +42,14 @@ def preorder(root):
     return [root.val] + preorder(root.left) + preorder(root.right) if root else []
 
 
+
 def inorder(root):
     return inorder(root.left) + [root.val] + inorder(root.right) if root else []
 
 
+
 def postorder(root):
     return postorder(root.left) + postorder(root.right) + [root.val] if root else []
+
+
+

@@ -20,7 +20,7 @@ def partition(array, low, high):
 def quick_sort(array, low, high):
     if low < high:
         pivot_poistion = partition(array, low, high)
-        quick_sort(array, low, pivot_poistion)
+        quick_sort(array, low, pivot_poistion - 1  )
         quick_sort(array, pivot_poistion + 1, high)
 
 
@@ -31,8 +31,6 @@ print(data)
 
 
 # Quick sort in Python
-
-
 # Function to partition the array on the basis of pivot element
 def partition(array, low, high):
     """

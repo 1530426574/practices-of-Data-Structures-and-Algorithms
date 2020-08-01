@@ -1,6 +1,5 @@
 from collections import defaultdict
-
-
+#用剩余元素填剩余空位。
 class Solution1:
     def solve_soduko(self, board):
         rows = [set(range(9)) for _ in range(9)]  # 初始化每行需要填的数字（1-9）
@@ -19,28 +18,29 @@ class Solution1:
                     empty.append((i, j))  # i,j 为空，需要填数
         # 这样就得到需要填数的坐标，以及每行还剩哪些数字可供选择
         index = 0
-        self.traceback(index, empty, rows, cols, boxes)
+        self.traceback(index, empty, rows, cols, boxes, board)
 
-    def traceback(self, index, empty, rows, cols, boxes):
-        if index == len(empty):
+    def traceback(self, index, empty, rows, cols, boxes, board):
+        if index == len(empty): #index 有点类似count，计数，empty，有点像deque。
             return True
-        i, j = empty[index]
+        i, j = empty[index]  #很巧妙
         box_index = (i // 3) * 3 + j // 3
         for val in (rows[i] & cols[j] & boxes[box_index]):
             rows[i].remove(val)
             cols[j].remove(val)
             boxes[box_index](val)
             board[i][j] = str(val)
-            if tracebacke(index + 1):  # find one solution ,stop .
+            if self.traceback(index + 1, empty, rows, cols, boxes, board):  # find one solution ,stop .
                 return True
             rows[i].add(val)
             cols[j].add(val)
             boxes[box_index].add(val)
+            board[i][j] = '.'
         return False
 
-        rows = [{} for _ in range(9)]
-
-    self.traceback(index, empty)
+    #     rows = [{} for _ in range(9)]
+    #
+    # self.traceback(index, empty)
 
 
 board = [["5", "3", ".", ".", "7", "8", ".", ".", "."],
@@ -75,7 +75,33 @@ print(7, empty)
 # for val in row[0] & col[0] & boxes[0]:
 #     print(val)
 print({1, 2, 4, 6, 9} & {1, 2, 3, 4, 5, 6, 7, 9} & {1, 2, 4, 7})
-
+# 编写一个程序，通过已填充的空格来解决数独问题。
+#
+#  一个数独的解法需遵循如下规则：
+#
+#
+#  数字 1-9 在每一行只能出现一次。
+#  数字 1-9 在每一列只能出现一次。
+#  数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。
+#
+#
+#  空白格用 '.' 表示。
+#
+#
+#
+#  一个数独。
+#
+#
+#
+#  答案被标成红色。
+#
+#  Note:
+#
+#
+#  给定的数独序列只包含数字 1-9 和字符 '.' 。
+#  你可以假设给定的数独只有唯一解。
+#  给定数独永远是 9x9 形式的。
+#
 
 def tracebacke(index=0):
     if index == len(empty):

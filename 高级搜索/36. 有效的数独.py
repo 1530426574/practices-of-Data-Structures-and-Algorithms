@@ -1,6 +1,6 @@
 from pprint import pprint
 
-a = [[((i // 3) * 3 + j // 3) for i in range(9)] for j in range(9)]
+a = [[((i // 3) * 3 + j // 3) for j in range(9)] for i in range(9)]
 pprint(a)
 
 
@@ -11,12 +11,10 @@ class Solution1:
         """
         关键在哪呢？？？统计每行、每列、每个box的  词频
         """
-
         # init data               统计每行、每列、每个box的  词频
         rows = [{} for i in range(9)]
         colums = [{} for i in range(9)]
         boxes = [{} for i in range(9)]
-
         # vilidate a board
         for i in range(9):
             for j in range(9):
@@ -31,6 +29,9 @@ class Solution1:
                 if rows[i][num] > 1 or colums[j][num] > 1 or boxes[box_index][num] > 1:
                     return False
         return True
+
+
+
 
 
 board = [["5", "3", ".", ".", "7", "8", ".", ".", "."],
